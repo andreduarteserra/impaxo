@@ -1,0 +1,175 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import FAQTabs from "@/components/FAQTabs";
+
+export const metadata: Metadata = {
+  title: "FAQ – Perguntas Frequentes",
+  description:
+    "Respostas às perguntas mais comuns sobre os serviços da Impaxo.",
+};
+
+const faqSections = [
+  {
+    title: "Geral",
+    items: [
+      {
+        question: "O que é a Impaxo e o que faz?",
+        answer:
+          "A Impaxo é uma agência de tecnologia brasileira especializada em criação de sites profissionais, marketing digital e desenvolvimento de aplicações móveis. Trabalhamos com empresas de todos os tamanhos para transformar a presença digital em resultados concretos de negócio.",
+      },
+      {
+        question: "Como funciona o processo de trabalho?",
+        answer:
+          "Começamos sempre com uma conversa para entender o seu negócio e objetivos. Em seguida, apresentamos uma proposta personalizada com escopo, prazo e investimento. Após aprovação, iniciamos o projeto com reuniões regulares de alinhamento. No final, entregamos e continuamos disponíveis para suporte.",
+      },
+      {
+        question: "Trabalham com empresas de qualquer tamanho?",
+        answer:
+          "Sim. Atendemos desde empreendedores individuais até médias empresas. As nossas soluções são sempre adaptadas à realidade e orçamento de cada cliente.",
+      },
+      {
+        question: "Têm contrato de confidencialidade (NDA)?",
+        answer:
+          "Sim. Para todos os projetos, podemos assinar um acordo de confidencialidade para proteger as informações do seu negócio e do projeto.",
+      },
+    ],
+  },
+  {
+    title: "Criação de Sites",
+    items: [
+      {
+        question: "Quanto tempo demora para criar um site?",
+        answer:
+          "Depende da complexidade do projeto. Uma landing page pode ser entregue em 1 a 2 semanas. Um site institucional completo leva entre 3 a 6 semanas. Um e-commerce pode levar de 6 a 12 semanas. Fornecemos sempre um cronograma detalhado na proposta.",
+      },
+      {
+        question: "O site vai ser otimizado para SEO?",
+        answer:
+          "Sim. Todos os nossos sites incluem SEO técnico base: velocidade de carregamento, estrutura de URLs, meta tags, sitemap, schema markup e integração com o Google Search Console. Também oferecemos serviços de SEO contínuo para quem quer ir mais longe.",
+      },
+      {
+        question: "Vou conseguir atualizar o conteúdo do site sozinho?",
+        answer:
+          "Absolutamente. Entregamos sempre com um sistema de gestão de conteúdo (CMS) intuitivo que permite atualizar textos, imagens e publicar novos artigos sem conhecimentos técnicos. Fazemos também formação completa no final do projeto.",
+      },
+      {
+        question: "E depois de o site estar pronto, têm suporte?",
+        answer:
+          "Sim. Oferecemos planos de manutenção mensal que incluem atualizações de segurança, backups, monitorização de uptime e suporte técnico. Também estamos disponíveis para alterações pontuais a pedido.",
+      },
+    ],
+  },
+  {
+    title: "Marketing Digital",
+    items: [
+      {
+        question: "Quanto tempo demora a ver resultados de SEO?",
+        answer:
+          "SEO é uma estratégia de médio a longo prazo. Os primeiros resultados significativos começam a aparecer entre 3 a 6 meses. No entanto, os benefícios são cumulativos e duradouros, ao contrário dos anúncios pagos que param quando o orçamento acaba.",
+      },
+      {
+        question: "Qual é o orçamento mínimo para anúncios pagos?",
+        answer:
+          "Recomendamos um mínimo de R$ 1.500/mês para anúncios (média de mercado), além da nossa taxa de gestão. Com menos verba, os dados não são suficientes para otimizar as campanhas de forma eficaz. Mas cada caso é avaliado individualmente.",
+      },
+      {
+        question: "Quais relatórios recebo sobre o desempenho das campanhas?",
+        answer:
+          "Enviamos relatórios mensais detalhados com as métricas mais importantes: tráfego, conversões, custo por lead, ROI e muito mais. Também fazemos reuniões mensais de análise para discutir os resultados e a estratégia.",
+      },
+    ],
+  },
+  {
+    title: "Desenvolvimento de Apps",
+    items: [
+      {
+        question: "Qual é a diferença entre app nativo e híbrido?",
+        answer:
+          "Um app nativo é desenvolvido especificamente para iOS (Swift) ou Android (Kotlin), oferecendo a melhor performance e acesso a todas as funcionalidades do dispositivo. Um app híbrido (React Native, Flutter) é desenvolvido uma vez e funciona nas duas plataformas, com menor custo e prazo. Recomendamos o tipo de acordo com as necessidades de cada projeto.",
+      },
+      {
+        question: "Vocês publicam o app nas lojas (App Store e Google Play)?",
+        answer:
+          "Sim. Tratamos de todo o processo de submissão, incluindo a preparação dos assets (ícones, screenshots), preenchimento das fichas nas lojas e acompanhamento do processo de aprovação.",
+      },
+      {
+        question: "O que acontece depois de o app ser lançado?",
+        answer:
+          "Oferecemos planos de manutenção e evolução contínua. As lojas atualizam frequentemente os seus requisitos, e os sistemas operativos lançam novas versões. A manutenção garante que o seu app continue a funcionar perfeitamente e que novas funcionalidades possam ser adicionadas.",
+      },
+    ],
+  },
+];
+
+function Kicker({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="inline-flex items-center gap-2">
+      <span className="h-px w-6 bg-electric" />
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">{children}</span>
+    </div>
+  );
+}
+
+export default function FAQPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden pt-40 pb-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-15"
+          style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+        />
+        <div className="relative mx-auto max-w-3xl px-6 lg:px-8 text-center">
+          <Kicker>FAQ</Kicker>
+          <h1 className="mt-6 font-heading text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            Perguntas frequentes
+          </h1>
+          <p className="mt-6 text-lg text-white/55">
+            Tem dúvidas? Encontre as respostas mais comuns aqui. Se não
+            encontrar o que procura, fale connosco.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ sections */}
+      <section className="py-12 pb-32">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <FAQTabs sections={faqSections} />
+        </div>
+      </section>
+
+      {/* Still have questions */}
+      <section className="py-24 bg-navy-deep">
+        <div className="mx-auto max-w-xl px-6 text-center">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Ainda tem dúvidas?
+          </h2>
+          <p className="mt-4 text-white/50">
+            A nossa equipa está disponível para responder a todas as suas
+            questões. Sem compromisso.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/contacto"
+              className="inline-flex h-12 items-center rounded-full bg-brand-blue px-8 text-sm font-semibold text-white transition hover:bg-blue-600"
+            >
+              Enviar mensagem
+            </Link>
+            <a
+              href="https://wa.me/5500000000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-white/15 px-8 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-green-400">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
