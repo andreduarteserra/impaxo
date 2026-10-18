@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQTabs from "@/components/FAQTabs";
+import { Kicker } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "FAQ – Perguntas Frequentes",
   description:
-    "Respostas às perguntas mais comuns sobre os serviços da Impaxo.",
+    "Prazos, preços, processo e suporte: respostas às perguntas mais comuns sobre os serviços da Impaxo.",
 };
 
 const faqSections = [
@@ -15,22 +16,27 @@ const faqSections = [
       {
         question: "O que é a Impaxo e o que faz?",
         answer:
-          "A Impaxo é uma agência de tecnologia brasileira especializada em criação de sites profissionais, marketing digital e desenvolvimento de aplicações móveis. Trabalhamos com empresas de todos os tamanhos para transformar a presença digital em resultados concretos de negócio.",
+          "A Impaxo é uma agência de tecnologia de São Paulo que cria sites, campanhas de marketing digital, aplicativos e sistemas sob medida. Também desenvolvemos produtos próprios no Impaxo Lab, como o Mensagram.",
+      },
+      {
+        question: "Quanto custa?",
+        answer:
+          "Depende do escopo: uma landing page e uma loja virtual são projetos muito diferentes. Por isso não trabalhamos com tabela fixa. Depois da primeira conversa, você recebe uma proposta gratuita com escopo, prazo e valor definidos por escrito, sem compromisso.",
       },
       {
         question: "Como funciona o processo de trabalho?",
         answer:
-          "Começamos sempre com uma conversa para entender o seu negócio e objetivos. Em seguida, apresentamos uma proposta personalizada com escopo, prazo e investimento. Após aprovação, iniciamos o projeto com reuniões regulares de alinhamento. No final, entregamos e continuamos disponíveis para suporte.",
+          "Seguimos sempre as mesmas cinco etapas: diagnóstico, proposta, construção, lançamento e evolução. Começamos com uma conversa para entender o seu negócio, enviamos a proposta por escrito e, depois da aprovação, executamos em etapas curtas com entregas que você acompanha.",
       },
       {
-        question: "Trabalham com empresas de qualquer tamanho?",
+        question: "Vocês trabalham com empresas de qualquer tamanho?",
         answer:
-          "Sim. Atendemos desde empreendedores individuais até médias empresas. As nossas soluções são sempre adaptadas à realidade e orçamento de cada cliente.",
+          "Sim. Atendemos desde empreendedores individuais até médias empresas. Adaptamos cada solução à realidade e ao orçamento do cliente.",
       },
       {
-        question: "Têm contrato de confidencialidade (NDA)?",
+        question: "Vocês assinam acordo de confidencialidade (NDA)?",
         answer:
-          "Sim. Para todos os projetos, podemos assinar um acordo de confidencialidade para proteger as informações do seu negócio e do projeto.",
+          "Sim. Em qualquer projeto podemos assinar um acordo de confidencialidade para proteger as informações do seu negócio.",
       },
     ],
   },
@@ -38,24 +44,24 @@ const faqSections = [
     title: "Criação de Sites",
     items: [
       {
-        question: "Quanto tempo demora para criar um site?",
+        question: "Quanto tempo leva para criar um site?",
         answer:
-          "Depende da complexidade do projeto. Uma landing page pode ser entregue em 1 a 2 semanas. Um site institucional completo leva entre 3 a 6 semanas. Um e-commerce pode levar de 6 a 12 semanas. Fornecemos sempre um cronograma detalhado na proposta.",
+          "Depende da complexidade do projeto. Uma landing page pode ser entregue em 1 a 2 semanas. Um site institucional completo leva de 3 a 6 semanas. Uma loja virtual, de 6 a 12 semanas. O cronograma detalhado vem sempre na proposta.",
       },
       {
         question: "O site vai ser otimizado para SEO?",
         answer:
-          "Sim. Todos os nossos sites incluem SEO técnico base: velocidade de carregamento, estrutura de URLs, meta tags, sitemap, schema markup e integração com o Google Search Console. Também oferecemos serviços de SEO contínuo para quem quer ir mais longe.",
+          "Sim. Todos os nossos sites incluem SEO técnico base: velocidade de carregamento, estrutura de URLs, meta tags, sitemap, schema markup e integração com o Google Search Console. Para quem quer ir além, também oferecemos SEO contínuo.",
       },
       {
-        question: "Vou conseguir atualizar o conteúdo do site sozinho?",
+        question: "Vou conseguir atualizar o site sozinho?",
         answer:
-          "Absolutamente. Entregamos sempre com um sistema de gestão de conteúdo (CMS) intuitivo que permite atualizar textos, imagens e publicar novos artigos sem conhecimentos técnicos. Fazemos também formação completa no final do projeto.",
+          "Sim. Entregamos um painel de conteúdo simples para atualizar textos e imagens e publicar artigos sem conhecimento técnico, com treinamento no final do projeto.",
       },
       {
-        question: "E depois de o site estar pronto, têm suporte?",
+        question: "E depois que o site fica pronto, vocês dão suporte?",
         answer:
-          "Sim. Oferecemos planos de manutenção mensal que incluem atualizações de segurança, backups, monitorização de uptime e suporte técnico. Também estamos disponíveis para alterações pontuais a pedido.",
+          "Sim. Oferecemos planos de manutenção mensal que incluem atualizações de segurança, backups, monitoramento de disponibilidade e suporte técnico. Também fazemos alterações pontuais sob demanda.",
       },
     ],
   },
@@ -63,9 +69,9 @@ const faqSections = [
     title: "Marketing Digital",
     items: [
       {
-        question: "Quanto tempo demora a ver resultados de SEO?",
+        question: "Em quanto tempo o SEO dá resultado?",
         answer:
-          "SEO é uma estratégia de médio a longo prazo. Os primeiros resultados significativos começam a aparecer entre 3 a 6 meses. No entanto, os benefícios são cumulativos e duradouros, ao contrário dos anúncios pagos que param quando o orçamento acaba.",
+          "SEO é uma estratégia de médio e longo prazo. Os primeiros resultados consistentes costumam aparecer entre 3 e 6 meses. Em compensação, os ganhos se acumulam e não param quando a verba acaba, como acontece com os anúncios.",
       },
       {
         question: "Qual é o orçamento mínimo para anúncios pagos?",
@@ -73,67 +79,58 @@ const faqSections = [
           "Recomendamos um mínimo de R$ 1.500/mês para anúncios (média de mercado), além da nossa taxa de gestão. Com menos verba, os dados não são suficientes para otimizar as campanhas de forma eficaz. Mas cada caso é avaliado individualmente.",
       },
       {
-        question: "Quais relatórios recebo sobre o desempenho das campanhas?",
+        question: "Que relatórios eu recebo?",
         answer:
-          "Enviamos relatórios mensais detalhados com as métricas mais importantes: tráfego, conversões, custo por lead, ROI e muito mais. Também fazemos reuniões mensais de análise para discutir os resultados e a estratégia.",
+          "Um relatório mensal com as métricas que importam (tráfego, conversões, custo por contato e retorno) e uma reunião mensal para analisar os resultados e decidir os próximos passos.",
       },
     ],
   },
   {
-    title: "Desenvolvimento de Apps",
+    title: "Apps e Sistemas",
     items: [
       {
-        question: "Qual é a diferença entre app nativo e híbrido?",
+        question: "Qual é a diferença entre app nativo e multiplataforma?",
         answer:
-          "Um app nativo é desenvolvido especificamente para iOS (Swift) ou Android (Kotlin), oferecendo a melhor performance e acesso a todas as funcionalidades do dispositivo. Um app híbrido (React Native, Flutter) é desenvolvido uma vez e funciona nas duas plataformas, com menor custo e prazo. Recomendamos o tipo de acordo com as necessidades de cada projeto.",
+          "Um app nativo é desenvolvido especificamente para iOS (Swift) ou Android (Kotlin), oferecendo a melhor performance e acesso a todas as funcionalidades do dispositivo. Um app multiplataforma (como React Native) é desenvolvido uma vez e funciona nos dois sistemas, com custo e prazo menores. Recomendamos a abordagem de acordo com cada projeto.",
       },
       {
         question: "Vocês publicam o app nas lojas (App Store e Google Play)?",
         answer:
-          "Sim. Tratamos de todo o processo de submissão, incluindo a preparação dos assets (ícones, screenshots), preenchimento das fichas nas lojas e acompanhamento do processo de aprovação.",
+          "Sim. Cuidamos de todo o processo: preparação de ícones e capturas de tela, preenchimento das fichas nas lojas e acompanhamento da aprovação.",
       },
       {
         question: "O que acontece depois de o app ser lançado?",
         answer:
-          "Oferecemos planos de manutenção e evolução contínua. As lojas atualizam frequentemente os seus requisitos, e os sistemas operativos lançam novas versões. A manutenção garante que o seu app continue a funcionar perfeitamente e que novas funcionalidades possam ser adicionadas.",
+          "Oferecemos planos de manutenção e evolução contínua. As lojas mudam os requisitos com frequência e os sistemas operacionais ganham novas versões. A manutenção garante que o app continue funcionando e permite adicionar novas funcionalidades.",
       },
     ],
   },
 ];
 
-function Kicker({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="inline-flex items-center gap-2">
-      <span className="h-px w-6 bg-electric" />
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">{children}</span>
-    </div>
-  );
-}
-
 export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-40 pb-20">
+      <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-15"
-          style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8 text-center">
           <Kicker>FAQ</Kicker>
           <h1 className="mt-6 font-heading text-5xl font-bold tracking-tight text-white sm:text-6xl">
             Perguntas frequentes
           </h1>
-          <p className="mt-6 text-lg text-white/55">
-            Tem dúvidas? Encontre as respostas mais comuns aqui. Se não
-            encontrar o que procura, fale connosco.
+          <p className="mt-6 text-lg text-white/65">
+            Prazos, preços, processo e suporte. Se a sua dúvida não estiver
+            aqui, fale com a gente.
           </p>
         </div>
       </section>
 
       {/* FAQ sections */}
-      <section className="py-12 pb-32">
+      <section className="pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <FAQTabs sections={faqSections} />
         </div>
@@ -145,14 +142,13 @@ export default function FAQPage() {
           <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Ainda tem dúvidas?
           </h2>
-          <p className="mt-4 text-white/50">
-            A nossa equipa está disponível para responder a todas as suas
-            questões. Sem compromisso.
+          <p className="mt-4 text-white/65">
+            A nossa equipe responde em até 24 horas úteis, sem compromisso.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contacto"
-              className="inline-flex h-12 items-center rounded-full bg-brand-blue px-8 text-sm font-semibold text-white transition hover:bg-blue-600"
+              href="/contato"
+              className="inline-flex h-12 items-center rounded-full bg-brand-blue px-8 text-sm font-semibold text-white transition hover:bg-brand-blue-hover"
             >
               Enviar mensagem
             </Link>

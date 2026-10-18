@@ -46,7 +46,7 @@ export default async function BlogPostPage({
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10"
-          style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           <Link
@@ -120,7 +120,7 @@ export default async function BlogPostPage({
             </div>
             <Link
               href="/contacto"
-              className="flex-shrink-0 inline-flex h-11 items-center rounded-full bg-brand-blue px-7 text-sm font-semibold text-white transition hover:bg-blue-600"
+              className="flex-shrink-0 inline-flex h-11 items-center rounded-full bg-brand-blue px-7 text-sm font-semibold text-white transition hover:bg-brand-blue-hover"
             >
               Falar com um especialista
             </Link>

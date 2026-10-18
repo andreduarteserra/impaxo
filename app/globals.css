@@ -5,7 +5,8 @@
   --color-navy-deep: #080e1a;
   --color-navy-card: #0d1829;
   --color-electric: #00D4FF;
-  --color-brand-blue: #2563eb;
+  --color-brand-blue: #2C5BFF;
+  --color-brand-blue-hover: #1E47E0;
   --font-heading: var(--font-syne);
   --font-body: var(--font-dm-sans);
 }

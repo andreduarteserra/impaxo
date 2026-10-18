@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { Kicker } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contato",
   description:
-    "Fale com a equipa da Impaxo. Estamos prontos para transformar o seu projeto em realidade.",
+    "Fale com a equipe da Impaxo. Conte o seu projeto e receba uma primeira análise em até 24 horas úteis.",
 };
 
 const contactInfo = [
@@ -51,41 +52,32 @@ const contactInfo = [
   },
 ];
 
-function Kicker({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="inline-flex items-center gap-2">
-      <span className="h-px w-6 bg-electric" />
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">{children}</span>
-    </div>
-  );
-}
-
-export default function ContactoPage() {
+export default function ContatoPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-40 pb-28">
+      <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-15"
-          style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-2xl">
-            <Kicker>Contacto</Kicker>
+            <Kicker>Contato</Kicker>
             <h1 className="mt-6 font-heading text-5xl font-bold tracking-tight text-white sm:text-6xl">
               Vamos conversar
             </h1>
-            <p className="mt-6 text-lg leading-8 text-white/55">
-              Conte-nos sobre o seu projeto. Respondemos em até 24 horas úteis
-              com uma análise inicial sem compromisso.
+            <p className="mt-6 text-lg leading-8 text-white/65">
+              Conte o que você precisa. Respondemos em até 24 horas úteis com
+              uma primeira análise, sem compromisso.
             </p>
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="pb-32">
+      <section className="pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
             {/* Form */}
@@ -94,8 +86,8 @@ export default function ContactoPage() {
                 <h2 className="font-heading text-lg font-bold text-white mb-1">
                   Envie uma mensagem
                 </h2>
-                <p className="text-sm text-white/40 mb-8">
-                  Preencha o formulário e entraremos em contacto brevemente.
+                <p className="text-sm text-white/60 mb-8">
+                  Quanto mais detalhes, melhor a primeira análise que enviamos.
                 </p>
                 <ContactForm />
               </div>
@@ -106,7 +98,7 @@ export default function ContactoPage() {
               {/* Contact info */}
               <div className="rounded-3xl border border-white/[0.08] bg-navy-card p-8">
                 <h2 className="font-heading text-lg font-bold text-white mb-7">
-                  Informações de contacto
+                  Informações de contato
                 </h2>
                 <div className="flex flex-col gap-6">
                   {contactInfo.map((info) => (
@@ -115,7 +107,7 @@ export default function ContactoPage() {
                         {info.icon}
                       </div>
                       <div>
-                        <p className="text-xs font-medium text-white/35 mb-1">{info.label}</p>
+                        <p className="text-xs font-medium text-white/60 mb-1">{info.label}</p>
                         {info.href ? (
                           <a
                             href={info.href}
@@ -150,7 +142,7 @@ export default function ContactoPage() {
                   <p className="font-heading font-bold text-white group-hover:text-green-400 transition">
                     Falar via WhatsApp
                   </p>
-                  <p className="text-sm text-white/40">Resposta em minutos</p>
+                  <p className="text-sm text-white/60">Resposta em minutos</p>
                 </div>
                 <svg className="h-5 w-5 text-white/20 group-hover:text-green-400 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -160,16 +152,16 @@ export default function ContactoPage() {
               {/* Trust */}
               <div className="rounded-3xl border border-white/[0.08] bg-navy-card p-7">
                 <h3 className="font-heading text-sm font-bold text-white mb-5 uppercase tracking-wide">
-                  Porquê escolher-nos
+                  O que você pode esperar
                 </h3>
                 <ul className="space-y-3.5">
                   {[
                     "Resposta em até 24 horas úteis",
                     "Proposta personalizada sem compromisso",
-                    "Equipa sénior em todos os projetos",
+                    "Acordo de confidencialidade (NDA) se precisar",
                     "Contrato transparente com escopo definido",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-white/55">
+                    <li key={item} className="flex items-center gap-3 text-sm text-white/65">
                       <svg className="h-4 w-4 flex-shrink-0 text-electric" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface FormData {
   name: string;
@@ -13,7 +14,7 @@ interface FormData {
 const serviceOptions = [
   "Criação de Sites",
   "Marketing Digital",
-  "Desenvolvimento de Apps",
+  "Apps e Sistemas",
   "Outro",
 ];
 
@@ -25,8 +26,10 @@ export default function ContactForm() {
     service: "",
     message: "",
   });
+  const [website, setWebsite] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -37,9 +40,27 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contato", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else if (res.status === 429) {
+        setError("Recebemos muitas mensagens deste endereço. Tente de novo daqui a alguns minutos.");
+      } else if (res.status === 400) {
+        setError("Confira os campos obrigatórios e o e-mail informado.");
+      } else {
+        setError("unavailable");
+      }
+    } catch {
+      setError("unavailable");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -54,7 +75,7 @@ export default function ContactForm() {
           Mensagem enviada!
         </h3>
         <p className="text-white/60 max-w-sm">
-          Recebemos o seu contacto. A nossa equipa vai responder em até 24 horas úteis.
+          Recebemos o seu contato. Respondemos em até 24 horas úteis no e-mail informado.
         </p>
         <button
           onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", service: "", message: "" }); }}
@@ -68,6 +89,11 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      {/* Campo-armadilha contra robôs: escondido de pessoas e de leitores de ecrã */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="website">Não preencha este campo</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+      </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/70">
@@ -81,7 +107,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={handleChange}
             placeholder="João Silva"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
         <div>
@@ -96,7 +122,7 @@ export default function ContactForm() {
             value={form.email}
             onChange={handleChange}
             placeholder="joao@empresa.com.br"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
       </div>
@@ -113,7 +139,7 @@ export default function ContactForm() {
             value={form.phone}
             onChange={handleChange}
             placeholder="+55 (11) 90000-0000"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
         <div>
@@ -146,15 +172,34 @@ export default function ContactForm() {
           rows={5}
           value={form.message}
           onChange={handleChange}
-          placeholder="Conte-nos sobre o seu projeto ou necessidade..."
-          className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+          placeholder="Conte sobre o seu negócio, o que você precisa e o prazo desejado."
+          className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
         />
       </div>
 
+      {error && (
+        <div role="alert" className="rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200">
+          {error === "unavailable" ? (
+            <>
+              Não foi possível enviar agora. Escreva diretamente para{" "}
+              <a href="mailto:contato@impaxo.com.br" className="font-semibold text-white underline underline-offset-2">
+                contato@impaxo.com.br
+              </a>{" "}
+              e respondemos no mesmo prazo.
+            </>
+          ) : (
+            error
+          )}
+        </div>
+      )}
+      <p className="text-xs leading-5 text-white/60">
+        Usamos estes dados só para responder ao seu contato. Veja a{" "}
+        <Link href="/privacidade" className="underline underline-offset-2 hover:text-white">Política de Privacidade</Link>.
+      </p>
       <button
         type="submit"
         disabled={loading}
-        className="flex items-center justify-center gap-2 rounded-full bg-brand-blue px-8 py-4 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-60"
+        className="flex items-center justify-center gap-2 rounded-full bg-brand-blue px-8 py-4 text-sm font-semibold text-white transition hover:bg-brand-blue-hover disabled:opacity-60"
       >
         {loading ? (
           <>

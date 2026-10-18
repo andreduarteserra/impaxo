@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import CookieBanner from "@/components/CookieBanner";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -20,11 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://impaxo.com.br"),
   title: {
     template: "%s | Impaxo",
-    default: "Impaxo – Agência de Tecnologia",
+    default: "Impaxo – Agência de tecnologia",
   },
   description:
-    "Agência de tecnologia brasileira especializada em criação de sites, marketing digital e desenvolvimento de apps.",
-  icons: { icon: "/impaxo_logo.png" },
+    "Agência de tecnologia de São Paulo: criação de sites, marketing digital e desenvolvimento de apps e sistemas sob medida.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -47,7 +45,6 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <BackToTop />
-        <CookieBanner />
       </body>
     </html>
   );

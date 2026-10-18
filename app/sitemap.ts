@@ -1,27 +1,27 @@
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/app/lib/posts";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://impaxo.com.br";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
+// O blog está desativado (redirect em next.config.ts) até haver artigos novos.
+const routes: { path: string; priority: number }[] = [
+  { path: "/", priority: 1 },
+  { path: "/servicos", priority: 0.9 },
+  { path: "/servicos/criacao-de-sites", priority: 0.8 },
+  { path: "/servicos/marketing-digital", priority: 0.8 },
+  { path: "/servicos/desenvolvimento-de-apps", priority: 0.8 },
+  { path: "/contato", priority: 0.8 },
+  { path: "/sobre", priority: 0.7 },
+  { path: "/lab", priority: 0.6 },
+  { path: "/lab/mensagram", priority: 0.6 },
+  { path: "/faq", priority: 0.6 },
+  { path: "/privacidade", priority: 0.3 },
+];
 
-  return [
-    { url: `${base}/`, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
-    { url: `${base}/servicos`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/servicos/criacao-de-sites`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/servicos/marketing-digital`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/servicos/desenvolvimento-de-apps`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/lab`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/lab/mensagram`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    ...posts.map((post) => ({
-      url: `${base}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
-    { url: `${base}/faq`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/contacto`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-  ];
+export default function sitemap(): MetadataRoute.Sitemap {
+  return routes.map((r) => ({
+    url: `${base}${r.path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: r.priority,
+  }));
 }

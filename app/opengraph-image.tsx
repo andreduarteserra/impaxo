@@ -29,7 +29,7 @@ export default function Image() {
             transform: "translateX(-50%)",
             width: 800,
             height: 500,
-            background: "radial-gradient(ellipse, rgba(37,99,235,0.35) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(44,91,255,0.35) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />

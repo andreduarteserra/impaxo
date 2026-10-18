@@ -1,123 +1,139 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Icon from "@/components/Icon";
+import { CONTACT_HREF } from "@/components/ui";
 
 const services = [
   { href: "/servicos/criacao-de-sites", label: "Criação de Sites" },
   { href: "/servicos/marketing-digital", label: "Marketing Digital" },
-  { href: "/servicos/desenvolvimento-de-apps", label: "Desenvolvimento de Apps" },
+  { href: "/servicos/desenvolvimento-de-apps", label: "Apps e Sistemas" },
 ];
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/lab", label: "Lab" },
-  { href: "/blog", label: "Blog" },
+  { href: "/sobre", label: "Sobre" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contacto", label: "Contacto" },
+  { href: CONTACT_HREF, label: "Contato" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  // Fecha os menus ao mudar de página (ajuste de estado durante o render).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
     setMenuOpen(false);
     setServicesOpen(false);
-  }, [pathname]);
+    setDropdownOpen(false);
+  }
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  // Fecha o dropdown com Escape ou clique fora.
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setDropdownOpen(false);
+    const onClick = (e: MouseEvent) => {
+      if (!dropdownRef.current?.contains(e.target as Node)) setDropdownOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [dropdownOpen]);
+
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const linkClass = (active: boolean) =>
+    `text-sm font-medium transition ${active ? "text-electric" : "text-white/75 hover:text-white"}`;
+  const mobileLinkClass = (active: boolean) =>
+    `rounded-lg px-4 py-3 text-sm font-medium transition ${
+      active ? "bg-electric/10 text-electric" : "text-white/75 hover:bg-white/5 hover:text-white"
+    }`;
 
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
+        scrolled || menuOpen
           ? "border-b border-white/[0.08] bg-navy-deep/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center">
-          <img
-            src="/impaxo_logo.png"
-            height={32}
-            alt="Impaxo"
-            className="h-8 w-auto"
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
+      <nav aria-label="Principal" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <Link href="/" className="flex items-center" aria-label="Impaxo – página inicial">
+          <img src="/brand/impaxo-logo-dark-bg.svg" height={32} alt="Impaxo" className="h-7 w-auto sm:h-8" />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop */}
         <div className="hidden items-center gap-8 lg:flex">
-          <Link
-            href="/"
-            className={`text-sm font-medium transition ${
-              isActive("/") ? "text-electric" : "text-white/70 hover:text-white"
-            }`}
-          >
-            Home
+          <Link href="/" className={linkClass(isActive("/"))}>
+            Início
           </Link>
 
-          {/* Serviços dropdown */}
-          <div className="group relative">
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
             <button
-              className={`flex items-center gap-1 text-sm font-medium transition ${
-                pathname.startsWith("/servicos")
-                  ? "text-electric"
-                  : "text-white/70 hover:text-white"
-              }`}
+              type="button"
+              aria-expanded={dropdownOpen}
+              aria-controls="menu-servicos"
+              onClick={() => setDropdownOpen((v) => !v)}
+              className={`flex items-center gap-1 ${linkClass(pathname.startsWith("/servicos"))}`}
             >
               Serviços
-              <svg
-                className="h-4 w-4 transition-transform group-hover:rotate-180"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <Icon
+                name="chevronDown"
+                className={`h-4 w-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
                 strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+              />
             </button>
-            <div className="invisible absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-xl border border-white/[0.08] bg-navy-card p-2 opacity-0 shadow-xl shadow-black/30 transition-all group-hover:visible group-hover:opacity-100">
-              <Link
-                href="/servicos"
-                className="block rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider text-electric/80 hover:bg-white/5"
-              >
-                Ver todos os serviços
-              </Link>
-              <div className="my-1 border-t border-white/[0.06]" />
-              {services.map((s) => (
+            <div
+              id="menu-servicos"
+              className={`absolute left-1/2 top-full w-60 -translate-x-1/2 pt-3 transition-all ${
+                dropdownOpen ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
+              <div className="rounded-xl border border-white/[0.08] bg-navy-card p-2 shadow-xl shadow-black/30">
                 <Link
-                  key={s.href}
-                  href={s.href}
-                  className="block rounded-lg px-4 py-2.5 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
+                  href="/servicos"
+                  className="block rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider text-electric hover:bg-white/5"
                 >
-                  {s.label}
+                  Todos os serviços
                 </Link>
-              ))}
+                <div className="my-1 border-t border-white/[0.06]" />
+                {services.map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="block rounded-lg px-4 py-2.5 text-sm text-white/75 transition hover:bg-white/5 hover:text-white"
+                  >
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
-          {navLinks.slice(1).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition ${
-                isActive(link.href)
-                  ? "text-electric"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
               {link.label}
             </Link>
           ))}
@@ -125,110 +141,80 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <Link
-            href="/contacto"
-            className="rounded-full bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            href={CONTACT_HREF}
+            className="rounded-full bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-blue-hover"
           >
-            Fale conosco
+            Pedir proposta
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Botão do menu mobile */}
         <button
+          type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-white/70 transition hover:bg-white/10 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-white/75 transition hover:bg-white/10 lg:hidden"
           aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
+          aria-controls="menu-mobile"
         >
-          {menuOpen ? (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+          <svg aria-hidden className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            />
+          </svg>
         </button>
       </nav>
 
-      {/* Mobile menu — animated with max-height */}
+      {/* Menu mobile */}
       <div
+        id="menu-mobile"
         className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-          menuOpen ? "max-h-[600px] border-t border-white/[0.06]" : "max-h-0"
+          menuOpen ? "max-h-[600px] border-t border-white/[0.06]" : "invisible max-h-0"
         }`}
       >
-        <div className="bg-navy-deep/95 backdrop-blur-md">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-            <div className="flex flex-col gap-1">
-              <Link
-                href="/"
-                className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
-                  isActive("/")
-                    ? "bg-electric/10 text-electric"
-                    : "text-white/70 hover:bg-white/5 hover:text-white"
-                }`}
-              >
-                Home
+        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-6 sm:px-6">
+          <Link href="/" className={mobileLinkClass(isActive("/"))}>
+            Início
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setServicesOpen(!servicesOpen)}
+            aria-expanded={servicesOpen}
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-white/75 hover:bg-white/5 hover:text-white"
+          >
+            Serviços
+            <Icon name="chevronDown" className={`h-4 w-4 transition-transform ${servicesOpen ? "rotate-180" : ""}`} strokeWidth={2} />
+          </button>
+
+          {servicesOpen && (
+            <div className="ml-4 flex flex-col gap-1 border-l border-white/10 pl-4">
+              <Link href="/servicos" className="rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-electric hover:bg-white/5">
+                Todos os serviços
               </Link>
-
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-white/70 hover:bg-white/5 hover:text-white"
-              >
-                Serviços
-                <svg
-                  className={`h-4 w-4 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {servicesOpen && (
-                <div className="ml-4 flex flex-col gap-1 border-l border-white/10 pl-4">
-                  <Link
-                    href="/servicos"
-                    className="rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-electric/80 hover:bg-white/5"
-                  >
-                    Ver todos
-                  </Link>
-                  {services.map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      className="rounded-lg px-4 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-
-              {navLinks.slice(1).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
-                    isActive(link.href)
-                      ? "bg-electric/10 text-electric"
-                      : "text-white/70 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  {link.label}
+              {services.map((s) => (
+                <Link key={s.href} href={s.href} className="rounded-lg px-4 py-2.5 text-sm text-white/75 hover:bg-white/5 hover:text-white">
+                  {s.label}
                 </Link>
               ))}
-
-              <div className="mt-4 border-t border-white/[0.08] pt-4">
-                <Link
-                  href="/contacto"
-                  className="block rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-blue-700"
-                >
-                  Fale conosco
-                </Link>
-              </div>
             </div>
+          )}
+
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className={mobileLinkClass(isActive(link.href))}>
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="mt-4 border-t border-white/[0.08] pt-4">
+            <Link
+              href={CONTACT_HREF}
+              className="block rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-blue-hover"
+            >
+              Pedir proposta gratuita
+            </Link>
           </div>
         </div>
       </div>

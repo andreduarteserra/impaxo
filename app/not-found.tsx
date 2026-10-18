@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Página não encontrada",
+};
 
 export default function NotFound() {
   return (
@@ -6,7 +11,7 @@ export default function NotFound() {
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full opacity-20"
-        style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
       />
       <div
         aria-hidden
@@ -29,23 +34,23 @@ export default function NotFound() {
             </span>
           </div>
           <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Isto não está aqui.
+            Esta página não existe.
           </h1>
-          <p className="mt-5 text-base text-white/50 max-w-sm mx-auto">
-            A página que procura não existe ou foi movida para outro endereço.
+          <p className="mt-5 text-base text-white/65 max-w-sm mx-auto">
+            O endereço pode estar errado ou a página mudou de lugar.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/"
-              className="inline-flex h-12 items-center rounded-full bg-brand-blue px-8 text-sm font-semibold text-white shadow-lg shadow-brand-blue/25 transition hover:bg-blue-600"
+              className="inline-flex h-12 items-center rounded-full bg-brand-blue px-8 text-sm font-semibold text-white shadow-lg shadow-brand-blue/25 transition hover:bg-brand-blue-hover"
             >
               Ir para a página inicial
             </Link>
             <Link
-              href="/contacto"
+              href="/contato"
               className="inline-flex h-12 items-center rounded-full border border-white/15 px-8 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
             >
-              Contactar-nos
+              Falar com a gente
             </Link>
           </div>
         </div>

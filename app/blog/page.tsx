@@ -40,7 +40,7 @@ export default function BlogPage() {
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 h-80 w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-15"
-          style={{ background: "radial-gradient(ellipse, #2563eb 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <Kicker>Blog Impaxo</Kicker>
@@ -65,7 +65,7 @@ export default function BlogPage() {
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100"
-              style={{ background: "radial-gradient(ellipse at top right, rgba(37,99,235,0.08) 0%, transparent 60%)" }}
+              style={{ background: "radial-gradient(ellipse at top right, rgba(44,91,255,0.08) 0%, transparent 60%)" }}
             />
             <div className="relative flex-1">
               <div className="mb-5 flex flex-wrap items-center gap-3">
