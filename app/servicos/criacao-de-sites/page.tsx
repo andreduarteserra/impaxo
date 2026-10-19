@@ -122,7 +122,7 @@ export default function CriacaoDeSitesPage() {
             {types.map((t) => (
               <div key={t.title} className="flex flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8">
                 <h3 className="font-heading text-xl font-bold text-white">{t.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/65">{t.description}</p>
+                <p className="mt-3 text-[15px] leading-7 text-white/70">{t.description}</p>
                 <p className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-electric">
                   <Icon name="clock" className="h-4 w-4" />
                   {t.timeline}
@@ -172,7 +172,7 @@ export default function CriacaoDeSitesPage() {
                 <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
                 <div>
                   <h3 className="font-heading text-base font-bold text-white">{a.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-white/65">{a.description}</p>
+                  <p className="mt-1 text-[15px] leading-7 text-white/70">{a.description}</p>
                 </div>
               </li>
             ))}

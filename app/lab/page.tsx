@@ -64,7 +64,7 @@ export default function LabPage() {
           ].map((item) => (
             <div key={item.title}>
               <h2 className="font-heading text-lg font-bold text-white">{item.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+              <p className="mt-3 text-[15px] leading-7 text-white/70">{item.text}</p>
             </div>
           ))}
         </div>

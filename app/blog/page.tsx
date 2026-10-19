@@ -140,7 +140,7 @@ export default function BlogPage() {
                 <h3 className="font-heading text-lg font-bold leading-snug text-white transition group-hover:text-electric flex-1">
                   {post.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-white/50 line-clamp-2">{post.excerpt}</p>
+                <p className="mt-3 text-[15px] leading-7 text-white/60 line-clamp-2">{post.excerpt}</p>
                 <div className="mt-6 border-t border-white/[0.06] pt-5 flex items-center justify-between">
                   <time className="text-xs text-white/35">
                     {new Date(post.date).toLocaleDateString("pt-BR", {

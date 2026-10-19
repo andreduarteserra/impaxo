@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FAQTabs from "@/components/FAQTabs";
 import JsonLd, { faqJsonLd } from "@/components/JsonLd";
-import { Kicker } from "@/components/ui";
+import { Kicker, WHATSAPP_HREF } from "@/components/ui";
 import { FAQ_SECTIONS } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ export default function FAQPage() {
               Enviar mensagem
             </Link>
             <a
-              href="https://wa.me/5500000000000"
+              href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center gap-2 rounded-full border border-white/15 px-8 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

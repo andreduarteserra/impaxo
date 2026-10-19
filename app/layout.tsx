@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import JsonLd from "@/components/JsonLd";
+import MobileCtaBar from "@/components/MobileCtaBar";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://impaxo.com.br";
 
@@ -64,6 +65,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <BackToTop />
+        <MobileCtaBar />
       </body>
     </html>
   );

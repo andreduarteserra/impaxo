@@ -55,7 +55,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             </button>
             {isOpen && (
               <div className="px-6 pb-5">
-                <p className="text-sm leading-7 text-white/70">{item.answer}</p>
+                <p className="text-[15px] leading-7 text-white/70">{item.answer}</p>
               </div>
             )}
           </div>

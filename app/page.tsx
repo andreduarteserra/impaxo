@@ -190,7 +190,7 @@ export default function HomePage() {
               <Icon name={c.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric" />
               <div>
                 <p className="font-heading text-sm font-bold text-white">{c.title}</p>
-                <p className="mt-1 text-sm leading-6 text-white/60">{c.text}</p>
+                <p className="mt-1 text-[15px] leading-7 text-white/70">{c.text}</p>
               </div>
             </div>
           ))}
@@ -207,9 +207,10 @@ export default function HomePage() {
               intro="Quase todo projeto começa com uma destas frases. Se alguma soa familiar, já sabemos por onde começar."
             />
           </FadeIn>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* No celular vira carrossel com scroll lateral; a partir de sm, grelha */}
+          <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
             {signals.map((s, i) => (
-              <FadeIn key={s.problem} delay={(i % 3) * 100}>
+              <FadeIn key={s.problem} delay={(i % 3) * 100} className="w-[82%] flex-shrink-0 snap-start sm:w-auto">
                 <Link
                   href={s.href}
                   className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-electric/30"
@@ -218,7 +219,7 @@ export default function HomePage() {
                     <Icon name={s.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-white/40 transition group-hover:text-electric" />
                     <p className="font-heading text-base font-bold leading-snug text-white">“{s.problem}”</p>
                   </div>
-                  <p className="mt-4 flex-1 border-t border-white/[0.06] pt-4 text-sm leading-6 text-white/65">{s.answer}</p>
+                  <p className="mt-4 flex-1 border-t border-white/[0.06] pt-4 text-[15px] leading-7 text-white/70">{s.answer}</p>
                   <span className="mt-5 flex items-center gap-1.5 text-sm font-medium text-white/60 transition group-hover:text-electric">
                     Como resolvemos
                     <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
@@ -227,6 +228,10 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
+          <p className="mt-4 flex items-center gap-2 text-sm text-white/50 sm:hidden">
+            Deslize para ver mais
+            <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2} />
+          </p>
         </div>
       </section>
 
@@ -249,7 +254,7 @@ export default function HomePage() {
                 >
                   <IconBadge name={svc.icon} tone={svc.tone} />
                   <h3 className="mt-6 font-heading text-xl font-bold text-white">{svc.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/65">{svc.description}</p>
+                  <p className="mt-3 text-[15px] leading-7 text-white/70">{svc.description}</p>
                   <ul className="mt-6 space-y-2.5 border-t border-white/[0.06] pt-6">
                     {svc.items.map((item) => (
                       <li key={item} className="flex items-center gap-2.5 text-sm text-white/80">
@@ -258,7 +263,7 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 flex-1 text-sm leading-6 text-white/55">
+                  <p className="mt-6 flex-1 text-[15px] leading-7 text-white/65">
                     <span className="font-semibold text-white/75">Ideal para:</span> {svc.idealFor}
                   </p>
                   <div className="mt-7 flex items-center justify-between gap-4">
@@ -299,7 +304,7 @@ export default function HomePage() {
                   "Auditorias de segurança internas antes de abrir o beta",
                 ]}
               />
-              <p className="mt-8 rounded-2xl border border-white/[0.08] bg-navy-card p-5 text-sm leading-6 text-white/70">
+              <p className="mt-8 rounded-2xl border border-white/[0.08] bg-navy-card p-5 text-[15px] leading-7 text-white/70">
                 <strong className="text-white">Por que isso importa para você:</strong> é a mesma equipe, com
                 o mesmo cuidado, que vai construir o seu site ou o seu app.
               </p>
@@ -341,7 +346,27 @@ export default function HomePage() {
             }
             intro="Uma comparação honesta entre os caminhos mais comuns para colocar a sua empresa na internet."
           />
-          <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-navy-card">
+          {/* Celular: um cartão por critério, com a Impaxo em destaque */}
+          <ul className="space-y-3 md:hidden">
+            {comparison.map((c) => (
+              <li key={c.row} className="rounded-2xl border border-white/[0.08] bg-navy-card p-5">
+                <p className="font-heading text-sm font-bold text-white">{c.row}</p>
+                <p className="mt-3 flex items-center gap-2 rounded-xl bg-brand-blue/10 px-3 py-2 text-[15px] font-semibold text-white">
+                  <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                  <span className="text-electric">Impaxo:</span> {c.values[3]}
+                </p>
+                <dl className="mt-3 grid grid-cols-1 gap-1.5 text-sm">
+                  {comparisonColumns.slice(0, 3).map((col, i) => (
+                    <div key={col} className="flex justify-between gap-4">
+                      <dt className="text-white/50">{col}</dt>
+                      <dd className="text-right text-white/70">{c.values[i]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden overflow-x-auto rounded-2xl border border-white/[0.08] bg-navy-card md:block">
             <table className="w-full min-w-[720px] text-left text-sm">
               <caption className="sr-only">Comparação entre fazer sozinho, freelancer, agência tradicional e Impaxo</caption>
               <thead>
@@ -383,7 +408,7 @@ export default function HomePage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-5 text-sm leading-6 text-white/50">
+          <p className="mt-5 text-[15px] leading-7 text-white/60">
             Comparação geral: há ótimos freelancers e ótimas agências. O importante é saber o que perguntar antes
             de contratar, seja a quem for.
           </p>
@@ -419,7 +444,7 @@ export default function HomePage() {
                   </span>
                   <div>
                     <h3 className="font-heading text-base font-bold text-white">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-white/65">{s.text}</p>
+                    <p className="mt-1 text-[15px] leading-7 text-white/70">{s.text}</p>
                   </div>
                 </li>
               ))}
@@ -428,7 +453,7 @@ export default function HomePage() {
           <aside className="self-end rounded-3xl border border-electric/20 bg-gradient-to-b from-electric/[0.07] to-transparent p-8 sm:p-10">
             <Icon name="document" className="h-7 w-7 text-electric" />
             <h3 className="mt-5 font-heading text-xl font-bold text-white">Para a conversa render mais</h3>
-            <p className="mt-2 text-sm leading-6 text-white/60">
+            <p className="mt-2 text-[15px] leading-7 text-white/70">
               Nada disto é obrigatório, mas ajuda a chegar a uma proposta realista logo de primeira.
             </p>
             <CheckList items={prepare} className="mt-6" />

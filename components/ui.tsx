@@ -5,6 +5,8 @@ import Icon, { type IconName } from "@/components/Icon";
 
 export const CONTACT_HREF = "/contato";
 export const CTA_PRIMARY = "Pedir proposta gratuita";
+// TODO: trocar pelo número real (formato wa.me/55DDDNUMERO).
+export const WHATSAPP_HREF = "https://wa.me/5500000000000";
 
 export function Kicker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -104,7 +106,7 @@ export function CheckList({ items, className = "" }: { items: string[]; classNam
   return (
     <ul className={`space-y-3 ${className}`}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-sm leading-6 text-white/75">
+        <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-white/75">
           <Icon name="check" className="mt-1 h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
           {item}
         </li>
@@ -135,7 +137,7 @@ export function ScopeSection({
           <h2 className="mt-5 font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
             O que influencia o valor do projeto
           </h2>
-          <p className="mt-3 text-sm leading-6 text-white/60">
+          <p className="mt-3 text-[15px] leading-7 text-white/70">
             Não usamos tabela fixa porque cada projeto é diferente. Estes são os fatores que mais pesam na
             proposta. O pagamento pode ser parcelado.
           </p>
@@ -145,7 +147,7 @@ export function ScopeSection({
                 <span className="font-heading text-sm font-bold text-electric/70">{String(i + 1).padStart(2, "0")}</span>
                 <div>
                   <dt className="font-heading text-sm font-bold text-white">{f.title}</dt>
-                  <dd className="mt-1 text-sm leading-6 text-white/60">{f.description}</dd>
+                  <dd className="mt-1 text-[15px] leading-7 text-white/70">{f.description}</dd>
                 </div>
               </div>
             ))}
@@ -176,7 +178,7 @@ export function FeatureCard({
     <div className="rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#0f1f38]">
       <IconBadge name={icon} tone={tone} />
       <h3 className="mt-5 font-heading text-base font-bold text-white">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-white/65">{description}</p>
+      <p className="mt-2 text-[15px] leading-7 text-white/70">{description}</p>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { WHATSAPP_HREF } from "@/components/ui";
 
 const columns = [
   {
@@ -29,12 +30,12 @@ export default function Footer() {
             <Link href="/" className="inline-block" aria-label="Impaxo – página inicial">
               <img src="/brand/impaxo-logo-dark-bg.svg" height={28} alt="Impaxo" className="h-7 w-auto" />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-white/60">
+            <p className="mt-5 max-w-xs text-[15px] leading-7 text-white/70">
               Agência de tecnologia de São Paulo. Sites, apps e marketing digital com padrão de produto.
             </p>
             <div className="mt-6">
               <a
-                href="https://wa.me/5500000000000"
+                href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -72,7 +73,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" className="text-sm text-white/65 transition hover:text-white">
+                  <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="text-sm text-white/65 transition hover:text-white">
                     +55 (11) 90000-0000
                   </a>
                 </li>

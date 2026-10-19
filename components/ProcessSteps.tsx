@@ -23,7 +23,7 @@ export default function ProcessSteps({ details }: { details?: [string, string, s
           </span>
           <div className="lg:mt-6">
             <h3 className="font-heading text-base font-bold text-white">{step.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-white/65">{details?.[i] ?? step.description}</p>
+            <p className="mt-2 text-[15px] leading-7 text-white/70">{details?.[i] ?? step.description}</p>
           </div>
         </li>
       ))}

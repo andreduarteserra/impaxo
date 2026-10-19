@@ -95,7 +95,7 @@ export default function MensagramPage() {
               <li key={s.title} className="rounded-2xl border border-white/[0.08] bg-navy-card p-7">
                 <span className="font-heading text-sm font-bold text-[#FF8A40]">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-3 font-heading text-lg font-bold text-white">{s.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-white/65">{s.text}</p>
+                <p className="mt-2 text-[15px] leading-7 text-white/70">{s.text}</p>
               </li>
             ))}
           </ol>
@@ -133,7 +133,7 @@ export default function MensagramPage() {
               </ul>
             </div>
           </div>
-          <p className="mt-6 text-sm leading-6 text-white/60">
+          <p className="mt-6 text-[15px] leading-7 text-white/70">
             Os servidores ficam na União Europeia. No beta, cada conta usa um dispositivo por vez: ao entrar
             num aparelho novo, o anterior envia uma cópia criptografada e é desconectado.
           </p>

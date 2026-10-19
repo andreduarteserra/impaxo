@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import { CheckList, Kicker } from "@/components/ui";
+import { CheckList, Kicker, WHATSAPP_HREF } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -27,7 +27,7 @@ const contactInfo = [
     ),
     label: "Telefone / WhatsApp",
     value: "+55 (11) 90000-0000",
-    href: "https://wa.me/5500000000000",
+    href: WHATSAPP_HREF,
   },
   {
     icon: (
@@ -128,7 +128,7 @@ export default function ContatoPage() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/5500000000000"
+                href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 rounded-3xl border border-green-500/20 bg-green-500/5 p-7 transition hover:border-green-500/40 hover:bg-green-500/10"
@@ -178,7 +178,7 @@ export default function ContatoPage() {
                 <h3 className="font-heading text-sm font-bold text-white mb-2 uppercase tracking-wide">
                   Para a primeira análise render mais
                 </h3>
-                <p className="mb-5 text-sm leading-6 text-white/60">Nada é obrigatório, mas ajuda contar:</p>
+                <p className="mb-5 text-[15px] leading-7 text-white/70">Nada é obrigatório, mas ajuda contar:</p>
                 <CheckList
                   items={[
                     "O objetivo principal do projeto",

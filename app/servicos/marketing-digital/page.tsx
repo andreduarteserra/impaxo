@@ -119,11 +119,11 @@ export default function MarketingDigitalPage() {
                 <Icon name={m.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
                 <div>
                   <h3 className="font-heading text-base font-bold text-white">{m.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-white/65">{m.description}</p>
+                  <p className="mt-1 text-[15px] leading-7 text-white/70">{m.description}</p>
                 </div>
               </div>
             ))}
-            <p className="text-sm leading-6 text-white/60">
+            <p className="text-[15px] leading-7 text-white/70">
               SEO costuma mostrar os primeiros resultados consistentes entre 3 e 6 meses. Anúncios trazem
               tráfego mais cedo, mas precisam de algumas semanas de dados para serem otimizados.
             </p>
@@ -159,7 +159,7 @@ export default function MarketingDigitalPage() {
                 <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
                 <div>
                   <h3 className="font-heading text-base font-bold text-white">{a.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-white/65">{a.description}</p>
+                  <p className="mt-1 text-[15px] leading-7 text-white/70">{a.description}</p>
                 </div>
               </li>
             ))}

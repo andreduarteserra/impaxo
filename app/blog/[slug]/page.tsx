@@ -148,7 +148,7 @@ export default async function BlogPostPage({
                   <h3 className="font-heading text-lg font-bold text-white transition group-hover:text-electric">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-white/50 line-clamp-2">{p.excerpt}</p>
+                  <p className="mt-2 text-[15px] leading-7 text-white/60 line-clamp-2">{p.excerpt}</p>
                 </Link>
               ))}
             </div>

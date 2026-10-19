@@ -40,6 +40,14 @@ p {
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 75%);
 }
 
+/* Carrosséis com scroll lateral sem barra visível */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 :focus-visible {
   outline: 2px solid #00D4FF;
   outline-offset: 3px;
