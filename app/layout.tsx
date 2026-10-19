@@ -4,6 +4,24 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import JsonLd from "@/components/JsonLd";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://impaxo.com.br";
+
+// Ficha da empresa para o Google (nome, cidade, serviços e área de atendimento).
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Impaxo",
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/impaxo-logo-black.svg`,
+  email: "contato@impaxo.com.br",
+  description: "Agência de tecnologia: criação de sites, marketing digital e desenvolvimento de apps e sistemas sob medida.",
+  address: { "@type": "PostalAddress", addressLocality: "São Paulo", addressRegion: "SP", addressCountry: "BR" },
+  areaServed: ["BR", "PT", "AO", "MZ", "CV", "GW", "ST", "TL"],
+  knowsLanguage: "pt",
+  openingHours: "Mo-Fr 09:00-18:00",
+};
 
 const syne = Syne({
   variable: "--font-syne",
@@ -16,7 +34,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://impaxo.com.br"),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s | Impaxo",
     default: "Impaxo – Agência de tecnologia",
@@ -41,6 +59,7 @@ export default function RootLayout({
       className={`${syne.variable} ${dmSans.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-navy text-white antialiased">
+        <JsonLd data={organizationJsonLd} />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

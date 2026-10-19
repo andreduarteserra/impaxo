@@ -1,111 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQTabs from "@/components/FAQTabs";
+import JsonLd, { faqJsonLd } from "@/components/JsonLd";
 import { Kicker } from "@/components/ui";
+import { FAQ_SECTIONS } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
   title: "FAQ – Perguntas Frequentes",
   description:
     "Prazos, preços, processo e suporte: respostas às perguntas mais comuns sobre os serviços da Impaxo.",
 };
-
-const faqSections = [
-  {
-    title: "Geral",
-    items: [
-      {
-        question: "O que é a Impaxo e o que faz?",
-        answer:
-          "A Impaxo é uma agência de tecnologia de São Paulo que cria sites, campanhas de marketing digital, aplicativos e sistemas sob medida. Também desenvolvemos produtos próprios no Impaxo Lab, como o Mensagram.",
-      },
-      {
-        question: "Quanto custa?",
-        answer:
-          "Depende do escopo: uma landing page e uma loja virtual são projetos muito diferentes. Por isso não trabalhamos com tabela fixa. Depois da primeira conversa, você recebe uma proposta gratuita com escopo, prazo e valor definidos por escrito, sem compromisso.",
-      },
-      {
-        question: "Como funciona o processo de trabalho?",
-        answer:
-          "Seguimos sempre as mesmas cinco etapas: diagnóstico, proposta, construção, lançamento e evolução. Começamos com uma conversa para entender o seu negócio, enviamos a proposta por escrito e, depois da aprovação, executamos em etapas curtas com entregas que você acompanha.",
-      },
-      {
-        question: "Vocês trabalham com empresas de qualquer tamanho?",
-        answer:
-          "Sim. Atendemos desde empreendedores individuais até médias empresas. Adaptamos cada solução à realidade e ao orçamento do cliente.",
-      },
-      {
-        question: "Vocês assinam acordo de confidencialidade (NDA)?",
-        answer:
-          "Sim. Em qualquer projeto podemos assinar um acordo de confidencialidade para proteger as informações do seu negócio.",
-      },
-    ],
-  },
-  {
-    title: "Criação de Sites",
-    items: [
-      {
-        question: "Quanto tempo leva para criar um site?",
-        answer:
-          "Depende da complexidade do projeto. Uma landing page pode ser entregue em 1 a 2 semanas. Um site institucional completo leva de 3 a 6 semanas. Uma loja virtual, de 6 a 12 semanas. O cronograma detalhado vem sempre na proposta.",
-      },
-      {
-        question: "O site vai ser otimizado para SEO?",
-        answer:
-          "Sim. Todos os nossos sites incluem SEO técnico base: velocidade de carregamento, estrutura de URLs, meta tags, sitemap, schema markup e integração com o Google Search Console. Para quem quer ir além, também oferecemos SEO contínuo.",
-      },
-      {
-        question: "Vou conseguir atualizar o site sozinho?",
-        answer:
-          "Sim. Entregamos um painel de conteúdo simples para atualizar textos e imagens e publicar artigos sem conhecimento técnico, com treinamento no final do projeto.",
-      },
-      {
-        question: "E depois que o site fica pronto, vocês dão suporte?",
-        answer:
-          "Sim. Oferecemos planos de manutenção mensal que incluem atualizações de segurança, backups, monitoramento de disponibilidade e suporte técnico. Também fazemos alterações pontuais sob demanda.",
-      },
-    ],
-  },
-  {
-    title: "Marketing Digital",
-    items: [
-      {
-        question: "Em quanto tempo o SEO dá resultado?",
-        answer:
-          "SEO é uma estratégia de médio e longo prazo. Os primeiros resultados consistentes costumam aparecer entre 3 e 6 meses. Em compensação, os ganhos se acumulam e não param quando a verba acaba, como acontece com os anúncios.",
-      },
-      {
-        question: "Qual é o orçamento mínimo para anúncios pagos?",
-        answer:
-          "Recomendamos um mínimo de R$ 1.500/mês para anúncios (média de mercado), além da nossa taxa de gestão. Com menos verba, os dados não são suficientes para otimizar as campanhas de forma eficaz. Mas cada caso é avaliado individualmente.",
-      },
-      {
-        question: "Que relatórios eu recebo?",
-        answer:
-          "Um relatório mensal com as métricas que importam (tráfego, conversões, custo por contato e retorno) e uma reunião mensal para analisar os resultados e decidir os próximos passos.",
-      },
-    ],
-  },
-  {
-    title: "Apps e Sistemas",
-    items: [
-      {
-        question: "Qual é a diferença entre app nativo e multiplataforma?",
-        answer:
-          "Um app nativo é desenvolvido especificamente para iOS (Swift) ou Android (Kotlin), oferecendo a melhor performance e acesso a todas as funcionalidades do dispositivo. Um app multiplataforma (como React Native) é desenvolvido uma vez e funciona nos dois sistemas, com custo e prazo menores. Recomendamos a abordagem de acordo com cada projeto.",
-      },
-      {
-        question: "Vocês publicam o app nas lojas (App Store e Google Play)?",
-        answer:
-          "Sim. Cuidamos de todo o processo: preparação de ícones e capturas de tela, preenchimento das fichas nas lojas e acompanhamento da aprovação.",
-      },
-      {
-        question: "O que acontece depois de o app ser lançado?",
-        answer:
-          "Oferecemos planos de manutenção e evolução contínua. As lojas mudam os requisitos com frequência e os sistemas operacionais ganham novas versões. A manutenção garante que o app continue funcionando e permite adicionar novas funcionalidades.",
-      },
-    ],
-  },
-];
 
 export default function FAQPage() {
   return (
@@ -132,7 +36,8 @@ export default function FAQPage() {
       {/* FAQ sections */}
       <section className="pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <FAQTabs sections={faqSections} />
+          <JsonLd data={faqJsonLd(FAQ_SECTIONS.flatMap((s) => s.items))} />
+          <FAQTabs sections={FAQ_SECTIONS} />
         </div>
       </section>
 

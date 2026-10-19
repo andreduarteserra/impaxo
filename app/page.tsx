@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+import FAQBlock from "@/components/FAQBlock";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessSteps from "@/components/ProcessSteps";
 import { ChatMockup, HeroVisual, MensagramWordmark } from "@/components/Mockups";
-import { ButtonLink, CONTACT_HREF, CTA_PRIMARY, CtaBand, FeatureCard, IconBadge, Kicker, SectionHeader } from "@/components/ui";
+import {
+  ButtonLink,
+  CONTACT_HREF,
+  CTA_PRIMARY,
+  CheckList,
+  CtaBand,
+  IconBadge,
+  Kicker,
+  SectionHeader,
+  TrustRow,
+  type Tone,
+} from "@/components/ui";
 import { MENSAGRAM_STATUS } from "@/app/lib/mensagram";
+import { HOME_FAQ } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
   title: { absolute: "Impaxo – Agência de tecnologia" },
@@ -13,11 +26,23 @@ export const metadata: Metadata = {
     "Sites, apps e marketing digital feitos por uma agência que também desenvolve os próprios produtos. Primeira análise gratuita em até 24 horas úteis.",
 };
 
-const services: { icon: IconName; title: string; description: string; href: string; tone: "blue" | "electric" | "purple" }[] = [
+const services: {
+  icon: IconName;
+  title: string;
+  description: string;
+  idealFor: string;
+  items: string[];
+  note: string;
+  href: string;
+  tone: Tone;
+}[] = [
   {
     icon: "desktop",
     title: "Criação de Sites",
     description: "Sites rápidos, bem posicionados no Google e pensados para transformar visitas em contatos.",
+    idealFor: "Quem precisa de uma presença profissional ou quer vender online.",
+    items: ["Landing pages", "Sites institucionais", "Lojas virtuais"],
+    note: "A partir de 1 a 2 semanas",
     href: "/servicos/criacao-de-sites",
     tone: "blue",
   },
@@ -25,6 +50,9 @@ const services: { icon: IconName; title: string; description: string; href: stri
     icon: "chart",
     title: "Marketing Digital",
     description: "SEO, Google Ads, Meta Ads e redes sociais, com relatório mensal do que funcionou e do que não funcionou.",
+    idealFor: "Quem quer mais clientes de forma previsível, sem depender só de indicação.",
+    items: ["SEO e conteúdo", "Google Ads e Meta Ads", "Redes sociais e e-mail"],
+    note: "Relatório e reunião todo mês",
     href: "/servicos/marketing-digital",
     tone: "electric",
   },
@@ -32,6 +60,9 @@ const services: { icon: IconName; title: string; description: string; href: stri
     icon: "mobile",
     title: "Apps e Sistemas",
     description: "Aplicativos, plataformas web e sistemas internos sob medida, do protótipo à publicação nas lojas.",
+    idealFor: "Quem quer automatizar a operação ou lançar um produto digital.",
+    items: ["Apps iOS e Android", "Plataformas web", "Sistemas internos e integrações"],
+    note: "MVP primeiro, evolução depois",
     href: "/servicos/desenvolvimento-de-apps",
     tone: "purple",
   },
@@ -39,32 +70,75 @@ const services: { icon: IconName; title: string; description: string; href: stri
 
 const commitments: { icon: IconName; title: string; text: string }[] = [
   { icon: "clock", title: "Resposta em até 24h úteis", text: "Toda mensagem recebe uma primeira análise, sem compromisso." },
-  { icon: "document", title: "Tudo por escrito", text: "Escopo, prazo e valor definidos na proposta antes de começar." },
-  { icon: "lock", title: "Confidencialidade", text: "Assinamos um acordo de confidencialidade (NDA) sempre que você precisar." },
-  { icon: "support", title: "Suporte depois da entrega", text: "Planos de manutenção para o projeto continuar seguro e atualizado." },
+  { icon: "document", title: "Tudo por escrito", text: "Escopo, prazo e valor na proposta, válida por 30 dias." },
+  { icon: "calendar", title: "Pagamento parcelado", text: "Condições combinadas na proposta, de acordo com o projeto." },
+  { icon: "globe", title: "Atendimento remoto", text: "Brasil e demais países de língua portuguesa." },
 ];
 
-const reasons: { icon: IconName; title: string; description: string }[] = [
+const signals: { problem: string; answer: string; href: string; icon: IconName }[] = [
   {
-    icon: "cube",
-    title: "Pensamos como produto",
-    description: "Construímos e mantemos os nossos próprios produtos. Sabemos o que é ter usuários reais dependendo do que entregamos.",
+    icon: "search",
+    problem: "O seu site não aparece no Google",
+    answer: "SEO técnico e de conteúdo para ser encontrado por quem já procura o que você oferece.",
+    href: "/servicos/marketing-digital",
+  },
+  {
+    icon: "bolt",
+    problem: "O site é lento ou não funciona bem no celular",
+    answer: "Reformulação rápida e responsiva, sem perder o posicionamento que você já tem.",
+    href: "/servicos/criacao-de-sites",
+  },
+  {
+    icon: "users",
+    problem: "Os clientes só chegam por indicação",
+    answer: "Anúncios e presença digital para criar um fluxo constante de novos contatos.",
+    href: "/servicos/marketing-digital",
   },
   {
     icon: "chart",
-    title: "Métricas desde o primeiro dia",
-    description: "Todo projeto sai com análise configurada, para você saber de onde vêm os clientes e o que melhorar.",
+    problem: "Investe em anúncios e não sabe o retorno",
+    answer: "Métricas configuradas e relatório mensal com custo por contato e retorno, em linguagem clara.",
+    href: "/servicos/marketing-digital",
+  },
+  {
+    icon: "document",
+    problem: "A operação vive em planilhas e no WhatsApp",
+    answer: "Um sistema sob medida que organiza pedidos, clientes e estoque num só lugar.",
+    href: "/servicos/desenvolvimento-de-apps",
   },
   {
     icon: "bulb",
-    title: "Solução sob medida",
-    description: "Nada de pacote genérico. Partimos do seu negócio e do seu orçamento para propor o que faz sentido.",
+    problem: "Tem a ideia de um app e não sabe por onde começar",
+    answer: "Definimos juntos um MVP: a primeira versão mais enxuta para testar com usuários reais.",
+    href: "/servicos/desenvolvimento-de-apps",
   },
-  {
-    icon: "shield",
-    title: "Segurança levada a sério",
-    description: "Quem implementa criptografia de ponta a ponta não deixa o seu site sem HTTPS nem atualizações de segurança.",
-  },
+];
+
+const comparison: { row: string; values: [string, string, string, string] }[] = [
+  { row: "Design", values: ["Modelo pronto", "Depende do profissional", "Exclusivo", "Exclusivo"] },
+  { row: "SEO técnico e velocidade", values: ["Básico", "Depende do profissional", "Muitas vezes à parte", "Incluído"] },
+  { row: "Métricas configuradas no lançamento", values: ["Você configura", "Raramente", "Depende", "Incluído"] },
+  { row: "Escopo, prazo e valor por escrito", values: ["Não se aplica", "Nem sempre", "Sim", "Sim"] },
+  { row: "Site, marketing e app com a mesma equipe", values: ["Não", "Raramente", "Às vezes", "Sim"] },
+  { row: "Experiência com produto próprio em produção", values: ["Não", "Raramente", "Raramente", "Sim, o Mensagram"] },
+  { row: "Suporte depois da entrega", values: ["Da plataforma", "Depende da agenda", "Planos de suporte", "Planos de manutenção"] },
+];
+
+const comparisonColumns = ["Fazer sozinho", "Freelancer", "Agência tradicional", "Impaxo"];
+
+const nextSteps: { title: string; text: string }[] = [
+  { title: "Você envia a mensagem", text: "Pelo formulário, por e-mail ou pelo WhatsApp. Pode ser só uma ideia." },
+  { title: "Resposta em até 24h úteis", text: "Com uma primeira análise e as perguntas que faltam para entender o projeto." },
+  { title: "Conversa de diagnóstico", text: "Uma videochamada curta para conhecer o negócio, o público e o objetivo." },
+  { title: "Proposta por escrito", text: "Escopo, prazo, valor e condições de parcelamento. Válida por 30 dias." },
+];
+
+const prepare = [
+  "O objetivo principal: vender mais, captar contatos, organizar a operação",
+  "Dois ou três sites ou apps de que você gosta (e por quê)",
+  "O que já existe: logo, textos, fotos, site atual",
+  "O prazo desejado e se há alguma data importante",
+  "Uma faixa de orçamento, mesmo que aproximada",
 ];
 
 export default function HomePage() {
@@ -78,11 +152,7 @@ export default function HomePage() {
             style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
           />
         </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.025]"
-          style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-        />
+        <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-[1.1fr_1fr] lg:px-8">
           <div>
@@ -101,6 +171,9 @@ export default function HomePage() {
               <ButtonLink href="/servicos" variant="secondary" arrow>
                 Ver serviços
               </ButtonLink>
+            </div>
+            <div className="mt-8">
+              <TrustRow />
             </div>
           </div>
           <div className="hidden lg:block">
@@ -124,8 +197,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Serviços ── */}
+      {/* ── Sinais ── */}
       <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <FadeIn>
+            <SectionHeader
+              kicker="Reconhece algum destes sinais?"
+              title="Os problemas que mais resolvemos"
+              intro="Quase todo projeto começa com uma destas frases. Se alguma soa familiar, já sabemos por onde começar."
+            />
+          </FadeIn>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {signals.map((s, i) => (
+              <FadeIn key={s.problem} delay={(i % 3) * 100}>
+                <Link
+                  href={s.href}
+                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-electric/30"
+                >
+                  <div className="flex items-start gap-4">
+                    <Icon name={s.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-white/40 transition group-hover:text-electric" />
+                    <p className="font-heading text-base font-bold leading-snug text-white">“{s.problem}”</p>
+                  </div>
+                  <p className="mt-4 flex-1 border-t border-white/[0.06] pt-4 text-sm leading-6 text-white/65">{s.answer}</p>
+                  <span className="mt-5 flex items-center gap-1.5 text-sm font-medium text-white/60 transition group-hover:text-electric">
+                    Como resolvemos
+                    <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Serviços ── */}
+      <section className="bg-navy-deep py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <SectionHeader
@@ -142,12 +248,29 @@ export default function HomePage() {
                   className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-[#0f1f38]"
                 >
                   <IconBadge name={svc.icon} tone={svc.tone} />
-                  <h3 className="mt-6 font-heading text-lg font-bold text-white">{svc.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-7 text-white/65">{svc.description}</p>
-                  <span className="mt-7 flex items-center gap-1.5 text-sm font-medium text-white/70 transition group-hover:text-electric">
-                    Saiba mais
-                    <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
-                  </span>
+                  <h3 className="mt-6 font-heading text-xl font-bold text-white">{svc.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{svc.description}</p>
+                  <ul className="mt-6 space-y-2.5 border-t border-white/[0.06] pt-6">
+                    {svc.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5 text-sm text-white/80">
+                        <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-6 flex-1 text-sm leading-6 text-white/55">
+                    <span className="font-semibold text-white/75">Ideal para:</span> {svc.idealFor}
+                  </p>
+                  <div className="mt-7 flex items-center justify-between gap-4">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                      <Icon name="clock" className="h-3.5 w-3.5" />
+                      {svc.note}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-sm font-medium text-white/70 transition group-hover:text-electric">
+                      Saiba mais
+                      <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
+                    </span>
+                  </div>
                 </Link>
               </FadeIn>
             ))}
@@ -156,7 +279,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Caso: Mensagram ── */}
-      <section className="bg-navy-deep py-24">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <div>
@@ -168,18 +291,14 @@ export default function HomePage() {
                 O Mensagram é o nosso próprio produto. Implementamos o Protocolo Signal, grupos e
                 chamadas criptografadas, cópia de segurança e a infraestrutura que mantém tudo no ar.
               </p>
-              <ul className="mt-8 space-y-3">
-                {[
+              <CheckList
+                className="mt-8"
+                items={[
                   "Criptografia de ponta a ponta implementada pela equipe",
                   "Testes automatizados de servidor, aplicação e navegador",
                   "Auditorias de segurança internas antes de abrir o beta",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/75">
-                    <Icon name="check" className="mt-0.5 h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                ]}
+              />
               <p className="mt-8 rounded-2xl border border-white/[0.08] bg-navy-card p-5 text-sm leading-6 text-white/70">
                 <strong className="text-white">Por que isso importa para você:</strong> é a mesma equipe, com
                 o mesmo cuidado, que vai construir o seu site ou o seu app.
@@ -210,8 +329,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Porquê ── */}
-      <section className="py-24">
+      {/* ── Comparação ── */}
+      <section className="bg-navy-deep py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeader
             kicker="Por que a Impaxo"
@@ -220,17 +339,59 @@ export default function HomePage() {
                 Mais do que uma agência: <span className="text-electric">um time de produto</span>
               </>
             }
+            intro="Uma comparação honesta entre os caminhos mais comuns para colocar a sua empresa na internet."
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((r) => (
-              <FeatureCard key={r.title} icon={r.icon} title={r.title} description={r.description} />
-            ))}
+          <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-navy-card">
+            <table className="w-full min-w-[720px] text-left text-sm">
+              <caption className="sr-only">Comparação entre fazer sozinho, freelancer, agência tradicional e Impaxo</caption>
+              <thead>
+                <tr className="border-b border-white/[0.08]">
+                  <th scope="col" className="p-5 font-medium text-white/50">
+                    <span className="sr-only">Critério</span>
+                  </th>
+                  {comparisonColumns.map((col, i) => (
+                    <th
+                      key={col}
+                      scope="col"
+                      className={`p-5 font-heading text-sm font-bold ${i === 3 ? "bg-brand-blue/10 text-electric" : "text-white/80"}`}
+                    >
+                      {col}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/[0.06]">
+                {comparison.map((c) => (
+                  <tr key={c.row}>
+                    <th scope="row" className="p-5 font-medium text-white/80">
+                      {c.row}
+                    </th>
+                    {c.values.map((v, i) => (
+                      <td key={i} className={`p-5 ${i === 3 ? "bg-brand-blue/10 font-semibold text-white" : "text-white/55"}`}>
+                        {i === 3 ? (
+                          <span className="flex items-center gap-2">
+                            <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                            {v}
+                          </span>
+                        ) : (
+                          v
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          <p className="mt-5 text-sm leading-6 text-white/50">
+            Comparação geral: há ótimos freelancers e ótimas agências. O importante é saber o que perguntar antes
+            de contratar, seja a quem for.
+          </p>
         </div>
       </section>
 
       {/* ── Processo ── */}
-      <section className="bg-navy-deep py-24">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeader
             kicker="Como trabalhamos"
@@ -240,6 +401,49 @@ export default function HomePage() {
           <ProcessSteps />
         </div>
       </section>
+
+      {/* ── Primeiro contato ── */}
+      <section className="bg-navy-deep py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8">
+          <div>
+            <SectionHeader
+              kicker="Primeiro contato"
+              title="O que acontece depois de enviar a mensagem"
+              intro="Sem formulários intermináveis nem pressão para fechar. Você decide no seu tempo."
+            />
+            <ol className="space-y-4">
+              {nextSteps.map((s, i) => (
+                <li key={s.title} className="flex gap-5 rounded-2xl border border-white/[0.08] bg-navy-card p-6">
+                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-blue/15 font-heading text-sm font-bold text-[#7f9bff]">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-heading text-base font-bold text-white">{s.title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-white/65">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <aside className="self-end rounded-3xl border border-electric/20 bg-gradient-to-b from-electric/[0.07] to-transparent p-8 sm:p-10">
+            <Icon name="document" className="h-7 w-7 text-electric" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-white">Para a conversa render mais</h3>
+            <p className="mt-2 text-sm leading-6 text-white/60">
+              Nada disto é obrigatório, mas ajuda a chegar a uma proposta realista logo de primeira.
+            </p>
+            <CheckList items={prepare} className="mt-6" />
+            <ButtonLink href={CONTACT_HREF} className="mt-8 w-full">
+              {CTA_PRIMARY}
+            </ButtonLink>
+          </aside>
+        </div>
+      </section>
+
+      <FAQBlock
+        items={HOME_FAQ}
+        title="O que as pessoas perguntam antes de falar com a gente"
+        intro="Preço, prazos, pagamento e como trabalhamos à distância."
+      />
 
       <CtaBand
         title="Vamos conversar sobre o seu projeto?"

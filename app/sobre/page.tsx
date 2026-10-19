@@ -47,7 +47,7 @@ export default function SobrePage() {
             Uma agência de tecnologia <span className="text-electric">com alma de produto</span>
           </>
         }
-        intro="Somos uma agência de São Paulo que cria sites, aplicativos e campanhas para empresas brasileiras. E, ao contrário da maioria das agências, também construímos e mantemos os nossos próprios produtos."
+        intro="Somos uma agência de São Paulo que cria sites, aplicativos e campanhas para empresas do Brasil e dos demais países de língua portuguesa. E, ao contrário da maioria das agências, também construímos e mantemos os nossos próprios produtos."
       />
 
       <section className="pb-24">

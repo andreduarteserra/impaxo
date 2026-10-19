@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import { Kicker } from "@/components/ui";
+import { CheckList, Kicker } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -37,7 +37,7 @@ const contactInfo = [
       </svg>
     ),
     label: "Localização",
-    value: "São Paulo, SP – Brasil",
+    value: "São Paulo, SP · atendimento remoto no Brasil e nos países de língua portuguesa",
     href: null,
   },
   {
@@ -158,6 +158,8 @@ export default function ContatoPage() {
                   {[
                     "Resposta em até 24 horas úteis",
                     "Proposta personalizada sem compromisso",
+                    "Proposta válida por 30 dias",
+                    "Pagamento parcelado",
                     "Acordo de confidencialidade (NDA) se precisar",
                     "Contrato transparente com escopo definido",
                   ].map((item) => (
@@ -169,6 +171,23 @@ export default function ContatoPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Preparação */}
+              <div className="rounded-3xl border border-electric/20 bg-gradient-to-b from-electric/[0.07] to-transparent p-7">
+                <h3 className="font-heading text-sm font-bold text-white mb-2 uppercase tracking-wide">
+                  Para a primeira análise render mais
+                </h3>
+                <p className="mb-5 text-sm leading-6 text-white/60">Nada é obrigatório, mas ajuda contar:</p>
+                <CheckList
+                  items={[
+                    "O objetivo principal do projeto",
+                    "Sites ou apps de referência de que você gosta",
+                    "O que já existe: logo, textos, site atual",
+                    "O prazo desejado",
+                    "Uma faixa de orçamento, mesmo aproximada",
+                  ]}
+                />
               </div>
             </div>
           </div>

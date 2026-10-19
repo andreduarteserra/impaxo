@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQBlock from "@/components/FAQBlock";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessSteps from "@/components/ProcessSteps";
-import { ButtonLink, CONTACT_HREF, CTA_PRIMARY, CtaBand, FeatureCard, PageHero, SectionHeader } from "@/components/ui";
+import {
+  ButtonLink,
+  CONTACT_HREF,
+  CTA_PRIMARY,
+  CtaBand,
+  FeatureCard,
+  PageHero,
+  ScopeSection,
+  SectionHeader,
+  TrustRow,
+} from "@/components/ui";
+import { faqSection } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
   title: "Marketing Digital",
@@ -34,6 +46,24 @@ const audience: { icon: IconName; title: string; description: string }[] = [
   { icon: "briefcase", title: "Profissionais liberais", description: "Advogados, médicos e consultores que querem atrair clientes sem depender só de indicação." },
 ];
 
+const priceFactors = [
+  { title: "Canais", description: "Só Google, só redes sociais ou uma combinação de SEO, anúncios e e-mail." },
+  { title: "Verba de anúncios", description: "O investimento nas plataformas, separado da taxa de gestão e combinado com você." },
+  { title: "Volume de conteúdo", description: "Quantas publicações, artigos e campanhas de e-mail por mês." },
+  { title: "Criativos", description: "Peças de design simples, fotografia ou produção de vídeo." },
+  { title: "Concorrência", description: "Setores disputados exigem mais conteúdo e mais tempo para subir no Google." },
+  { title: "Ponto de partida", description: "Se já existe site preparado, contas de anúncios e histórico de dados." },
+];
+
+const monthlyDeliverables = [
+  "Plano de canais, público e metas acompanháveis",
+  "Campanhas com rastreamento de conversões configurado",
+  "Calendário editorial e produção dos conteúdos do mês",
+  "Relatório mensal com o investimento e o retorno de cada canal",
+  "Reunião mensal de análise e próximos passos",
+  "Otimização contínua de anúncios, criativos e segmentação",
+];
+
 export default function MarketingDigitalPage() {
   return (
     <>
@@ -46,6 +76,8 @@ export default function MarketingDigitalPage() {
           </>
         }
         intro="Estratégias integradas que levam a mensagem certa ao público certo, com cada real investido acompanhado em relatório."
+        tone="electric"
+        aside={<TrustRow items={["Diagnóstico gratuito", "Relatório mensal", "Pagamento parcelado"]} />}
       >
         <ButtonLink href={CONTACT_HREF}>Pedir diagnóstico gratuito</ButtonLink>
         <ButtonLink href="#mensal" variant="secondary">O que você recebe</ButtonLink>
@@ -134,6 +166,16 @@ export default function MarketingDigitalPage() {
           </ul>
         </div>
       </section>
+
+      <ScopeSection
+        factors={priceFactors}
+        deliverables={monthlyDeliverables}
+        deliverablesKicker="Todo mês"
+        deliverablesTitle="O que está incluído"
+        className="bg-navy-deep"
+      />
+
+      <FAQBlock items={faqSection("marketing")} title="Dúvidas sobre marketing digital" />
 
       <CtaBand
         title="Pronto para vender mais pela internet?"

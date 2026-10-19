@@ -10,12 +10,21 @@ const STEPS = [
 
 export default function ProcessSteps({ details }: { details?: [string, string, string, string, string] }) {
   return (
-    <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+    <ol className="relative grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-6">
+      {/* Linha que liga as etapas: vertical no celular, horizontal no desktop */}
+      <span
+        aria-hidden
+        className="absolute bottom-6 left-6 top-6 w-px bg-gradient-to-b from-brand-blue via-electric/60 to-transparent lg:bottom-auto lg:left-6 lg:right-6 lg:top-6 lg:h-px lg:w-auto lg:bg-gradient-to-r"
+      />
       {STEPS.map((step, i) => (
-        <li key={step.title} className="relative rounded-2xl border border-white/[0.08] bg-navy-card p-6">
-          <span className="font-heading text-sm font-bold text-electric">{String(i + 1).padStart(2, "0")}</span>
-          <h3 className="mt-3 font-heading text-base font-bold text-white">{step.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-white/65">{details?.[i] ?? step.description}</p>
+        <li key={step.title} className="relative flex gap-5 lg:flex-col lg:gap-0">
+          <span className="relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-electric/40 bg-navy font-heading text-sm font-bold text-electric shadow-[0_0_24px_-4px_rgba(0,212,255,0.45)]">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div className="lg:mt-6">
+            <h3 className="font-heading text-base font-bold text-white">{step.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-white/65">{details?.[i] ?? step.description}</p>
+          </div>
         </li>
       ))}
     </ol>

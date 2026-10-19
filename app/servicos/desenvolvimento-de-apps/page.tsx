@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQBlock from "@/components/FAQBlock";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessSteps from "@/components/ProcessSteps";
-import { ButtonLink, CONTACT_HREF, CTA_PRIMARY, CtaBand, FeatureCard, PageHero, SectionHeader } from "@/components/ui";
+import {
+  ButtonLink,
+  CONTACT_HREF,
+  CTA_PRIMARY,
+  CtaBand,
+  FeatureCard,
+  PageHero,
+  ScopeSection,
+  SectionHeader,
+  TrustRow,
+} from "@/components/ui";
+import { faqSection } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
   title: "Apps e Sistemas",
@@ -42,6 +54,24 @@ const audience: { icon: IconName; title: string; description: string }[] = [
   { icon: "bulb", title: "Quem ainda está na ideia", description: "Ajudamos a transformar um problema claro num produto digital viável." },
 ];
 
+const priceFactors = [
+  { title: "Plataformas", description: "Só web, só celular, ou iOS, Android e web ao mesmo tempo." },
+  { title: "Funcionalidades", description: "Quantas telas, fluxos e tipos de usuário (cliente, equipe, administrador)." },
+  { title: "Integrações", description: "Pagamentos, ERP, CRM, mapas, notificações ou APIs de terceiros." },
+  { title: "Painel administrativo", description: "Ferramentas internas para gerir usuários, conteúdos e relatórios." },
+  { title: "Segurança e LGPD", description: "Dados sensíveis, criptografia e requisitos legais de privacidade." },
+  { title: "MVP ou versão completa", description: "Começar enxuto reduz o investimento inicial e o risco." },
+];
+
+const handover = [
+  "Protótipo navegável aprovado antes de escrever código",
+  "App ou sistema publicado nas lojas ou no ar",
+  "Testes automatizados e revisão de segurança",
+  "Documentação técnica do projeto",
+  "Monitoramento ativo nas primeiras semanas",
+  "Plano de evolução para as próximas versões",
+];
+
 export default function DesenvolvimentoDeAppsPage() {
   return (
     <>
@@ -54,6 +84,8 @@ export default function DesenvolvimentoDeAppsPage() {
           </>
         }
         intro="Aplicativos, plataformas web e sistemas internos que automatizam processos, reduzem custos e abrem novas fontes de receita."
+        tone="purple"
+        aside={<TrustRow items={["Avaliação de viabilidade gratuita", "NDA se precisar", "Pagamento parcelado"]} />}
       >
         <ButtonLink href={CONTACT_HREF}>{CTA_PRIMARY}</ButtonLink>
         <ButtonLink href="/lab/mensagram" variant="secondary" arrow>Ver um produto nosso</ButtonLink>
@@ -152,6 +184,10 @@ export default function DesenvolvimentoDeAppsPage() {
           </ul>
         </div>
       </section>
+
+      <ScopeSection factors={priceFactors} deliverables={handover} />
+
+      <FAQBlock items={faqSection("apps")} title="Dúvidas sobre apps e sistemas" className="bg-navy-deep" />
 
       <CtaBand
         title="Tem uma ideia? Vamos transformá-la em produto."

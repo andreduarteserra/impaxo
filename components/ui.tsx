@@ -63,7 +63,23 @@ export function SectionHeader({
   );
 }
 
-export function IconBadge({ name, tone = "blue" }: { name: IconName; tone?: "blue" | "electric" | "purple" }) {
+// Garantias curtas por baixo dos botões principais.
+export function TrustRow({ items = TRUST_ITEMS }: { items?: string[] }) {
+  return (
+    <ul className="flex flex-wrap gap-x-6 gap-y-2">
+      {items.map((item) => (
+        <li key={item} className="flex items-center gap-2 text-sm text-white/60">
+          <Icon name="check" className="h-4 w-4 text-electric" strokeWidth={2.5} />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export const TRUST_ITEMS = ["Proposta gratuita", "Resposta em até 24h úteis", "Pagamento parcelado"];
+
+export function IconBadge({ name, tone = "blue" }: { name: IconName; tone?: Tone }) {
   const tones = {
     blue: "bg-brand-blue/15 text-[#7f9bff]",
     electric: "bg-electric/10 text-electric",
@@ -76,6 +92,75 @@ export function IconBadge({ name, tone = "blue" }: { name: IconName; tone?: "blu
   );
 }
 
+export type Tone = "blue" | "electric" | "purple";
+
+const TONE_GLOW: Record<Tone, string> = {
+  blue: "#2C5BFF",
+  electric: "#00D4FF",
+  purple: "#a855f7",
+};
+
+export function CheckList({ items, className = "" }: { items: string[]; className?: string }) {
+  return (
+    <ul className={`space-y-3 ${className}`}>
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3 text-sm leading-6 text-white/75">
+          <Icon name="check" className="mt-1 h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// "O que influencia o valor" + "O que você recebe": substitui a tabela de preços que não temos.
+export function ScopeSection({
+  factors,
+  deliverables,
+  deliverablesKicker = "Na entrega",
+  deliverablesTitle = "O que você recebe",
+  className = "",
+}: {
+  factors: { title: string; description: string }[];
+  deliverables: string[];
+  deliverablesKicker?: string;
+  deliverablesTitle?: string;
+  className?: string;
+}) {
+  return (
+    <section className={`py-24 ${className}`}>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 lg:grid-cols-[1.4fr_1fr] lg:px-8">
+        <div className="rounded-3xl border border-white/[0.08] bg-navy-card p-8 sm:p-10">
+          <Kicker>Investimento</Kicker>
+          <h2 className="mt-5 font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            O que influencia o valor do projeto
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-white/60">
+            Não usamos tabela fixa porque cada projeto é diferente. Estes são os fatores que mais pesam na
+            proposta. O pagamento pode ser parcelado.
+          </p>
+          <dl className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            {factors.map((f, i) => (
+              <div key={f.title} className="flex gap-4">
+                <span className="font-heading text-sm font-bold text-electric/70">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <dt className="font-heading text-sm font-bold text-white">{f.title}</dt>
+                  <dd className="mt-1 text-sm leading-6 text-white/60">{f.description}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div className="rounded-3xl border border-electric/20 bg-gradient-to-b from-electric/[0.07] to-transparent p-8 sm:p-10">
+          <Kicker>{deliverablesKicker}</Kicker>
+          <h2 className="mt-5 font-heading text-2xl font-bold tracking-tight text-white">{deliverablesTitle}</h2>
+          <CheckList items={deliverables} className="mt-8" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function FeatureCard({
   icon,
   title,
@@ -85,10 +170,10 @@ export function FeatureCard({
   icon: IconName;
   title: string;
   description: string;
-  tone?: "blue" | "electric" | "purple";
+  tone?: Tone;
 }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-navy-card p-7">
+    <div className="rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#0f1f38]">
       <IconBadge name={icon} tone={tone} />
       <h3 className="mt-5 font-heading text-base font-bold text-white">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-white/65">{description}</p>
@@ -102,20 +187,25 @@ export function PageHero({
   intro,
   children,
   breadcrumb,
+  tone = "blue",
+  aside,
 }: {
   kicker: string;
   title: React.ReactNode;
   intro: React.ReactNode;
   children?: React.ReactNode;
   breadcrumb?: React.ReactNode;
+  tone?: Tone;
+  aside?: React.ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-96 w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20"
-        style={{ background: "radial-gradient(ellipse, #2C5BFF 0%, transparent 70%)" }}
+        className="pointer-events-none absolute left-1/2 top-0 h-96 w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25"
+        style={{ background: `radial-gradient(ellipse, ${TONE_GLOW[tone]} 0%, transparent 70%)` }}
       />
+      <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {breadcrumb}
         <div className="max-w-3xl">
@@ -123,6 +213,7 @@ export function PageHero({
           <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-white sm:text-6xl">{title}</h1>
           <p className="mt-6 text-lg leading-8 text-white/65">{intro}</p>
           {children && <div className="mt-10 flex flex-wrap gap-4">{children}</div>}
+          {aside && <div className="mt-8">{aside}</div>}
         </div>
       </div>
     </section>

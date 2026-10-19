@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQBlock from "@/components/FAQBlock";
 import Icon, { type IconName } from "@/components/Icon";
 import ProcessSteps from "@/components/ProcessSteps";
-import { ButtonLink, CONTACT_HREF, CTA_PRIMARY, CtaBand, FeatureCard, PageHero, SectionHeader } from "@/components/ui";
+import {
+  ButtonLink,
+  CONTACT_HREF,
+  CTA_PRIMARY,
+  CtaBand,
+  FeatureCard,
+  PageHero,
+  ScopeSection,
+  SectionHeader,
+  TrustRow,
+} from "@/components/ui";
+import { faqSection } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
   title: "Criação de Sites",
@@ -47,6 +59,24 @@ const audience: { icon: IconName; title: string; description: string }[] = [
   { icon: "briefcase", title: "Profissionais liberais", description: "Advogados, médicos e consultores cuja reputação online pesa na decisão do cliente." },
 ];
 
+const priceFactors = [
+  { title: "Número de páginas", description: "Uma landing page, um site com cinco seções ou um portal com dezenas de páginas." },
+  { title: "Conteúdo", description: "Se você fornece textos e fotos ou se nós produzimos e redigimos o conteúdo." },
+  { title: "Funcionalidades", description: "Blog, agendamento online, área de cliente, várias línguas, calculadoras." },
+  { title: "Integrações", description: "WhatsApp, CRM, meios de pagamento, ERP ou ferramentas que você já usa." },
+  { title: "Loja virtual", description: "Quantidade de produtos, variações, regras de frete e meios de pagamento." },
+  { title: "Prazo", description: "Datas apertadas exigem mais gente ao mesmo tempo no projeto." },
+];
+
+const deliverables = [
+  "Site no ar, com domínio e HTTPS configurados",
+  "Painel de conteúdo, com treinamento para a sua equipe",
+  "Google Search Console e análise de tráfego configurados",
+  "Formulários e botão de WhatsApp funcionando e testados",
+  "Sitemap, meta tags e dados estruturados para o Google",
+  "Opção de plano de manutenção mensal",
+];
+
 export default function CriacaoDeSitesPage() {
   return (
     <>
@@ -59,6 +89,8 @@ export default function CriacaoDeSitesPage() {
           </>
         }
         intro="Design exclusivo, carregamento rápido e SEO desde o início. Um site feito para trazer clientes, não só para existir."
+        tone="blue"
+        aside={<TrustRow />}
       >
         <ButtonLink href={CONTACT_HREF}>{CTA_PRIMARY}</ButtonLink>
         <ButtonLink href="#tipos" variant="secondary">Ver tipos de site</ButtonLink>
@@ -147,6 +179,10 @@ export default function CriacaoDeSitesPage() {
           </ul>
         </div>
       </section>
+
+      <ScopeSection factors={priceFactors} deliverables={deliverables} className="bg-navy-deep" />
+
+      <FAQBlock items={faqSection("sites")} title="Dúvidas sobre criação de sites" />
 
       <CtaBand
         title="Pronto para ter um site que realmente funciona?"
