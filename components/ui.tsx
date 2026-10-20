@@ -6,7 +6,7 @@ import Icon, { type IconName } from "@/components/Icon";
 export const CONTACT_HREF = "/contato";
 export const CTA_PRIMARY = "Pedir proposta gratuita";
 // TODO: trocar pelo número real (formato wa.me/55DDDNUMERO).
-export const WHATSAPP_HREF = "https://wa.me/5500000000000";
+export const WHATSAPP_HREF = "https://wa.me/5511918589993";
 
 export function Kicker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (

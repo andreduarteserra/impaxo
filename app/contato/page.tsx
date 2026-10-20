@@ -26,7 +26,7 @@ const contactInfo = [
       </svg>
     ),
     label: "Telefone / WhatsApp",
-    value: "+55 (11) 90000-0000",
+    value: "+55 (11) 91858-9993",
     href: WHATSAPP_HREF,
   },
   {

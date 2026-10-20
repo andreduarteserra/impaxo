@@ -74,7 +74,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="text-sm text-white/65 transition hover:text-white">
-                    +55 (11) 90000-0000
+                    +55 (11) 91858-9993
                   </a>
                 </li>
                 <li>
