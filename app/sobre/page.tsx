@@ -5,7 +5,7 @@ import { ButtonLink, CtaBand, FeatureCard, PageHero, SectionHeader } from "@/com
 export const metadata: Metadata = {
   title: "Sobre",
   description:
-    "A Impaxo é uma agência de tecnologia de São Paulo que cria sites, apps e campanhas e também desenvolve os próprios produtos digitais.",
+    "A Impaxo é uma agência de tecnologia com sede em Joinville (SC) que cria sites, apps e campanhas e também desenvolve os próprios produtos digitais.",
 };
 
 const principles: { icon: IconName; title: string; description: string }[] = [
@@ -47,7 +47,7 @@ export default function SobrePage() {
             Uma agência de tecnologia <span className="text-electric">com alma de produto</span>
           </>
         }
-        intro="Somos uma agência de São Paulo que cria sites, aplicativos e campanhas para empresas do Brasil e dos demais países de língua portuguesa. E, ao contrário da maioria das agências, também construímos e mantemos os nossos próprios produtos."
+        intro="Somos uma agência com sede em Joinville, Santa Catarina, e profissionais espalhados remotamente pelo Brasil. Criamos sites, aplicativos e campanhas para empresas do Brasil e dos demais países de língua portuguesa. E, ao contrário da maioria das agências, também construímos e mantemos os nossos próprios produtos."
       />
 
       <section className="pb-24">

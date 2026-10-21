@@ -156,7 +156,7 @@ export default function HomePage() {
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-[1.1fr_1fr] lg:px-8">
           <div>
-            <Kicker>Agência de tecnologia · São Paulo</Kicker>
+            <Kicker>Agência de tecnologia · Joinville, SC</Kicker>
             <h1 className="mt-7 font-heading text-[2.6rem] font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
               Sites, apps e marketing com{" "}
               <span className="bg-gradient-to-r from-electric to-brand-blue bg-clip-text text-transparent">padrão de produto</span>

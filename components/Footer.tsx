@@ -31,7 +31,7 @@ export default function Footer() {
               <img src="/brand/impaxo-logo-dark-bg.svg" height={28} alt="Impaxo" className="h-7 w-auto" />
             </Link>
             <p className="mt-5 max-w-xs text-[15px] leading-7 text-white/70">
-              Agência de tecnologia de São Paulo. Sites, apps e marketing digital com padrão de produto.
+              Agência de tecnologia com sede em Joinville (SC) e equipe remota em todo o Brasil. Sites, apps e marketing digital com padrão de produto.
             </p>
             <div className="mt-6">
               <a
@@ -78,7 +78,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <span className="text-sm text-white/65">São Paulo, SP – Brasil</span>
+                  <span className="text-sm text-white/65">Rua Expedicionário Holz, nº 21, América<br />Joinville – SC, CEP 89201-740</span>
                 </li>
               </ul>
             </div>

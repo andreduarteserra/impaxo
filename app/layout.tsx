@@ -18,7 +18,14 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/brand/impaxo-logo-black.svg`,
   email: "contato@impaxo.com.br",
   description: "Agência de tecnologia: criação de sites, marketing digital e desenvolvimento de apps e sistemas sob medida.",
-  address: { "@type": "PostalAddress", addressLocality: "São Paulo", addressRegion: "SP", addressCountry: "BR" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Rua Expedicionário Holz, 21 – América",
+    addressLocality: "Joinville",
+    addressRegion: "SC",
+    postalCode: "89201-740",
+    addressCountry: "BR",
+  },
   areaServed: ["BR", "PT", "AO", "MZ", "CV", "GW", "ST", "TL"],
   knowsLanguage: "pt",
   openingHours: "Mo-Fr 09:00-18:00",
@@ -41,7 +48,7 @@ export const metadata: Metadata = {
     default: "Impaxo – Agência de tecnologia",
   },
   description:
-    "Agência de tecnologia de São Paulo: criação de sites, marketing digital e desenvolvimento de apps e sistemas sob medida.",
+    "Agência de tecnologia com sede em Joinville (SC): criação de sites, marketing digital e desenvolvimento de apps e sistemas sob medida.",
   openGraph: {
     type: "website",
     locale: "pt_BR",

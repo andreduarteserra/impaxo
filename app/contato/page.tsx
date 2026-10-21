@@ -37,7 +37,7 @@ const contactInfo = [
       </svg>
     ),
     label: "Localização",
-    value: "São Paulo, SP · atendimento remoto no Brasil e nos países de língua portuguesa",
+    value: "Sede: Rua Expedicionário Holz, nº 21, Bairro América, Joinville – SC, CEP 89201-740 · equipe remota em todo o Brasil",
     href: null,
   },
   {

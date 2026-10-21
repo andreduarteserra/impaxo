@@ -11,7 +11,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       {
         question: "O que é a Impaxo e o que faz?",
         answer:
-          "A Impaxo é uma agência de tecnologia de São Paulo que cria sites, campanhas de marketing digital, aplicativos e sistemas sob medida. Também desenvolvemos produtos próprios no Impaxo Lab, como o Mensagram.",
+          "A Impaxo é uma agência de tecnologia com sede em Joinville, Santa Catarina, e profissionais espalhados por todo o Brasil, que cria sites, campanhas de marketing digital, aplicativos e sistemas sob medida. Também desenvolvemos produtos próprios no Impaxo Lab, como o Mensagram.",
       },
       {
         question: "Quanto custa?",
@@ -19,7 +19,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
           "Depende do escopo: uma landing page e uma loja virtual são projetos muito diferentes. Por isso não trabalhamos com tabela fixa. Depois da primeira conversa, você recebe uma proposta gratuita com escopo, prazo e valor definidos por escrito, sem compromisso.",
       },
       {
-        question: "Vocês atendem empresas fora de São Paulo?",
+        question: "Vocês atendem empresas fora de Santa Catarina?",
         answer:
           "Sim. Trabalhamos de forma remota com empresas de todo o Brasil e dos demais países de língua portuguesa. As reuniões são por videochamada e você acompanha o andamento do projeto online, do diagnóstico à entrega.",
       },
