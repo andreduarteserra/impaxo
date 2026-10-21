@@ -109,7 +109,7 @@ export default async function BlogPostPage({
           </div>
 
           {/* CTA card */}
-          <div className="mt-16 rounded-2xl border border-electric/20 bg-[#0d1e30] p-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-16 rounded-2xl border border-electric/20 bg-[#1B2E4C] p-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="font-heading text-lg font-bold text-white">
                 Gostou deste artigo?
@@ -140,7 +140,7 @@ export default async function BlogPostPage({
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group flex flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition hover:border-white/15 hover:bg-[#0f1f38]"
+                  className="group flex flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition hover:border-white/15 hover:bg-[#223658]"
                 >
                   <span className="mb-3 rounded-full bg-electric/10 px-3 py-1 text-xs font-medium text-electric w-fit">
                     {p.category}

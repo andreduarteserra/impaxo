@@ -250,7 +250,7 @@ export default function HomePage() {
               <FadeIn key={svc.href} delay={i * 120}>
                 <Link
                   href={svc.href}
-                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-[#0f1f38]"
+                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-[#223658]"
                 >
                   <IconBadge name={svc.icon} tone={svc.tone} />
                   <h3 className="mt-6 font-heading text-xl font-bold text-white">{svc.title}</h3>

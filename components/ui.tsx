@@ -175,7 +175,7 @@ export function FeatureCard({
   tone?: Tone;
 }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#0f1f38]">
+    <div className="rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#223658]">
       <IconBadge name={icon} tone={tone} />
       <h3 className="mt-5 font-heading text-base font-bold text-white">{title}</h3>
       <p className="mt-2 text-[15px] leading-7 text-white/70">{description}</p>
@@ -239,7 +239,7 @@ export function CtaBand({
         <div className="rounded-3xl bg-gradient-to-br from-brand-blue/50 via-electric/20 to-transparent p-px">
           <div
             className="relative overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16"
-            style={{ background: "linear-gradient(135deg, #0f1f3d 0%, #0B1220 60%)" }}
+            style={{ background: "linear-gradient(135deg, #1E3566 0%, #15233D 60%)" }}
           >
             <div
               aria-hidden

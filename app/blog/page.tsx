@@ -129,7 +129,7 @@ export default function BlogPage() {
               <FadeIn key={post.slug} delay={i * 100}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition hover:-translate-y-1 hover:border-white/15 hover:bg-[#0f1f38] hover:shadow-lg hover:shadow-black/20"
+                className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition hover:-translate-y-1 hover:border-white/15 hover:bg-[#223658] hover:shadow-lg hover:shadow-black/20"
               >
                 <div className="mb-5 flex items-center gap-3">
                   <span className={`rounded-full px-3 py-1 text-xs font-medium ${categoryColor(post.category)}`}>
