@@ -66,20 +66,20 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-electric/30 bg-electric/5 px-8 py-16 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-electric/20 text-electric mb-6">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-electric/20 text-electric-ink mb-6">
           <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="font-heading text-3xl font-bold text-white mb-3">
+        <h3 className="font-heading text-3xl font-bold text-ink mb-3">
           Mensagem enviada!
         </h3>
-        <p className="text-white/60 max-w-sm">
+        <p className="text-ink/60 max-w-sm">
           Recebemos o seu contato. Respondemos em até 24 horas úteis no e-mail informado.
         </p>
         <button
           onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", service: "", message: "" }); }}
-          className="mt-8 rounded-full border border-white/20 px-6 py-2.5 text-sm font-medium text-white/70 transition hover:border-white/40 hover:text-white"
+          className="mt-8 rounded-full border border-ink/20 px-6 py-2.5 text-sm font-medium text-ink/70 transition hover:border-ink/40 hover:text-ink"
         >
           Enviar outra mensagem
         </button>
@@ -96,8 +96,8 @@ export default function ContactForm() {
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/70">
-            Nome completo <span className="text-electric">*</span>
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-ink/70">
+            Nome completo <span className="text-electric-ink">*</span>
           </label>
           <input
             id="name"
@@ -107,12 +107,12 @@ export default function ContactForm() {
             value={form.name}
             onChange={handleChange}
             placeholder="João Silva"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-ink/10 bg-ink/5 px-4 py-3 text-sm text-ink placeholder-ink/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/70">
-            E-mail <span className="text-electric">*</span>
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-ink/70">
+            E-mail <span className="text-electric-ink">*</span>
           </label>
           <input
             id="email"
@@ -122,14 +122,14 @@ export default function ContactForm() {
             value={form.email}
             onChange={handleChange}
             placeholder="joao@empresa.com.br"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-ink/10 bg-ink/5 px-4 py-3 text-sm text-ink placeholder-ink/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/70">
+          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-ink/70">
             Telefone / WhatsApp
           </label>
           <input
@@ -139,11 +139,11 @@ export default function ContactForm() {
             value={form.phone}
             onChange={handleChange}
             placeholder="+55 (11) 90000-0000"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-ink/10 bg-ink/5 px-4 py-3 text-sm text-ink placeholder-ink/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
           />
         </div>
         <div>
-          <label htmlFor="service" className="mb-2 block text-sm font-medium text-white/70">
+          <label htmlFor="service" className="mb-2 block text-sm font-medium text-ink/70">
             Serviço de interesse
           </label>
           <select
@@ -151,7 +151,7 @@ export default function ContactForm() {
             name="service"
             value={form.service}
             onChange={handleChange}
-            className="w-full rounded-xl border border-white/10 bg-navy-card px-4 py-3 text-sm text-white outline-none transition focus:border-electric/60 focus:ring-2 focus:ring-electric/20"
+            className="w-full rounded-xl border border-ink/10 bg-navy-card px-4 py-3 text-sm text-ink outline-none transition focus:border-electric/60 focus:ring-2 focus:ring-electric/20"
           >
             <option value="">Selecione um serviço</option>
             {serviceOptions.map((o) => (
@@ -162,8 +162,8 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/70">
-          Mensagem <span className="text-electric">*</span>
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-ink/70">
+          Mensagem <span className="text-electric-ink">*</span>
         </label>
         <textarea
           id="message"
@@ -173,16 +173,16 @@ export default function ContactForm() {
           value={form.message}
           onChange={handleChange}
           placeholder="Conte sobre o seu negócio, o que você precisa e o prazo desejado."
-          className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
+          className="w-full resize-none rounded-xl border border-ink/10 bg-ink/5 px-4 py-3 text-sm text-ink placeholder-ink/40 outline-none transition focus:border-electric/60 focus:bg-electric/5 focus:ring-2 focus:ring-electric/20"
         />
       </div>
 
       {error && (
-        <div role="alert" className="rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200">
+        <div role="alert" className="rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-700">
           {error === "unavailable" ? (
             <>
               Não foi possível enviar agora. Escreva diretamente para{" "}
-              <a href="mailto:contato@impaxo.com.br" className="font-semibold text-white underline underline-offset-2">
+              <a href="mailto:contato@impaxo.com.br" className="font-semibold text-ink underline underline-offset-2">
                 contato@impaxo.com.br
               </a>{" "}
               e respondemos no mesmo prazo.
@@ -192,9 +192,9 @@ export default function ContactForm() {
           )}
         </div>
       )}
-      <p className="text-xs leading-5 text-white/60">
+      <p className="text-xs leading-5 text-ink/60">
         Usamos estes dados só para responder ao seu contato. Veja a{" "}
-        <Link href="/privacidade" className="underline underline-offset-2 hover:text-white">Política de Privacidade</Link>.
+        <Link href="/privacidade" className="underline underline-offset-2 hover:text-ink">Política de Privacidade</Link>.
       </p>
       <button
         type="submit"

@@ -51,7 +51,7 @@ export default async function BlogPostPage({
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           <Link
             href="/blog"
-            className="mb-10 inline-flex items-center gap-2 text-sm text-white/40 transition hover:text-white"
+            className="mb-10 inline-flex items-center gap-2 text-sm text-ink/40 transition hover:text-ink"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -60,11 +60,11 @@ export default async function BlogPostPage({
           </Link>
 
           <div className="mb-6 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-electric/10 px-3 py-1.5 text-xs font-semibold text-electric">
+            <span className="rounded-full bg-electric/10 px-3 py-1.5 text-xs font-semibold text-electric-ink">
               {post.category}
             </span>
-            <span className="text-xs text-white/35">{post.readTime} de leitura</span>
-            <time className="text-xs text-white/35">
+            <span className="text-xs text-ink/35">{post.readTime} de leitura</span>
+            <time className="text-xs text-ink/35">
               {new Date(post.date).toLocaleDateString("pt-BR", {
                 day: "numeric",
                 month: "long",
@@ -73,16 +73,16 @@ export default async function BlogPostPage({
             </time>
           </div>
 
-          <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+          <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-white/55">{post.excerpt}</p>
+          <p className="mt-6 text-lg leading-8 text-ink/55">{post.excerpt}</p>
         </div>
       </section>
 
       {/* Divider */}
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-ink/10 to-transparent" />
       </div>
 
       {/* Article */}
@@ -94,14 +94,14 @@ export default async function BlogPostPage({
                 return (
                   <h2
                     key={i}
-                    className="font-heading text-3xl font-bold tracking-tight text-white pt-6 first:pt-0"
+                    className="font-heading text-3xl font-bold tracking-tight text-ink pt-6 first:pt-0"
                   >
                     {line.replace("## ", "")}
                   </h2>
                 );
               }
               return (
-                <p key={i} className="text-base leading-8 text-white/60">
+                <p key={i} className="text-base leading-8 text-ink/60">
                   {line}
                 </p>
               );
@@ -109,12 +109,12 @@ export default async function BlogPostPage({
           </div>
 
           {/* CTA card */}
-          <div className="mt-16 rounded-2xl border border-electric/20 bg-[#1B2E4C] p-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-16 rounded-2xl border border-electric/20 bg-[#EEF6FA] p-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h3 className="font-heading text-lg font-bold text-white">
+              <h3 className="font-heading text-lg font-bold text-ink">
                 Gostou deste artigo?
               </h3>
-              <p className="mt-1 text-sm text-white/50">
+              <p className="mt-1 text-sm text-ink/50">
                 Fale com a nossa equipa e veja como aplicar estas ideias ao seu negócio.
               </p>
             </div>
@@ -130,9 +130,9 @@ export default async function BlogPostPage({
 
       {/* Related posts */}
       {related.length > 0 && (
-        <section className="border-t border-white/[0.06] py-20 bg-navy-deep">
+        <section className="border-t border-ink/[0.06] py-20 bg-navy-deep">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-white mb-8">
+            <h2 className="font-heading text-3xl font-bold text-ink mb-8">
               Artigos relacionados
             </h2>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -140,15 +140,15 @@ export default async function BlogPostPage({
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group flex flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition hover:border-white/15 hover:bg-[#223658]"
+                  className="group flex flex-col rounded-2xl border border-ink/[0.08] bg-navy-card p-8 transition hover:border-ink/15 hover:bg-[#F7F9FC]"
                 >
-                  <span className="mb-3 rounded-full bg-electric/10 px-3 py-1 text-xs font-medium text-electric w-fit">
+                  <span className="mb-3 rounded-full bg-electric/10 px-3 py-1 text-xs font-medium text-electric-ink w-fit">
                     {p.category}
                   </span>
-                  <h3 className="font-heading text-lg font-bold text-white transition group-hover:text-electric">
+                  <h3 className="font-heading text-lg font-bold text-ink transition group-hover:text-electric-ink">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-[15px] leading-7 text-white/60 line-clamp-2">{p.excerpt}</p>
+                  <p className="mt-2 text-[15px] leading-7 text-ink/60 line-clamp-2">{p.excerpt}</p>
                 </Link>
               ))}
             </div>

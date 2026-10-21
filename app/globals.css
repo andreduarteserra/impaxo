@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #15233D;
-  --color-navy-deep: #101C33;
-  --color-navy-card: #1B2C4A;
+  --color-navy: #FFFFFF;
+  --color-navy-deep: #F3F6FB;
+  --color-navy-card: #FFFFFF;
+  --color-ink: #0B1220;
+  --color-electric-ink: #0E7490;
+  --color-footer: #15233D;
   --color-electric: #00D4FF;
   --color-brand-blue: #2C5BFF;
   --color-brand-blue-hover: #1E47E0;
@@ -16,8 +19,8 @@ html {
 }
 
 body {
-  background-color: #15233D;
-  color: #ffffff;
+  background-color: #FFFFFF;
+  color: #0B1220;
   font-family: var(--font-dm-sans, "DM Sans", sans-serif);
   -webkit-font-smoothing: antialiased;
 }
@@ -34,8 +37,8 @@ p {
 /* Grelha subtil de fundo, a desvanecer para baixo */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(11, 18, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 18, 32, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 75%);
 }

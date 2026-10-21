@@ -23,20 +23,20 @@ export default function NotFound() {
       />
 
       <div className="relative text-center">
-        <p className="font-heading text-[160px] font-bold leading-none tracking-tight text-white/[0.04] sm:text-[220px]">
+        <p className="font-heading text-[160px] font-bold leading-none tracking-tight text-ink/[0.04] sm:text-[220px]">
           404
         </p>
         <div className="-mt-8 sm:-mt-14">
           <div className="inline-flex items-center gap-2 mb-6">
             <span className="h-px w-6 bg-electric" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric-ink">
               Página não encontrada
             </span>
           </div>
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">
             Esta página não existe.
           </h1>
-          <p className="mt-5 text-base text-white/65 max-w-sm mx-auto">
+          <p className="mt-5 text-base text-ink/65 max-w-sm mx-auto">
             O endereço pode estar errado ou a página mudou de lugar.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -48,7 +48,7 @@ export default function NotFound() {
             </Link>
             <Link
               href="/contato"
-              className="inline-flex h-12 items-center rounded-full border border-white/15 px-8 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              className="inline-flex h-12 items-center rounded-full border border-ink/15 px-8 text-sm font-semibold text-ink transition hover:border-ink/30 hover:bg-ink/5"
             >
               Falar com a gente
             </Link>

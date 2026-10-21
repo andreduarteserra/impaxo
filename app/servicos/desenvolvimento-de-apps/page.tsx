@@ -80,7 +80,7 @@ export default function DesenvolvimentoDeAppsPage() {
         kicker="Apps e Sistemas"
         title={
           <>
-            Software sob medida <span className="text-electric">que cresce com você</span>
+            Software sob medida <span className="text-electric-ink">que cresce com você</span>
           </>
         }
         intro="Aplicativos, plataformas web e sistemas internos que automatizam processos, reduzem custos e abrem novas fontes de receita."
@@ -111,14 +111,14 @@ export default function DesenvolvimentoDeAppsPage() {
           <SectionHeader kicker="Tipos de projeto" title="Qual é o seu desafio?" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {types.map((t) => (
-              <div key={t.title} className="rounded-2xl border border-white/[0.08] bg-navy-card p-7">
-                <Icon name={t.icon} className="h-6 w-6 text-purple-300" />
-                <h3 className="mt-5 font-heading text-lg font-bold text-white">{t.title}</h3>
-                <p className="mt-2 text-[15px] leading-7 text-white/70">{t.description}</p>
-                <ul className="mt-5 space-y-2 border-t border-white/[0.06] pt-5">
+              <div key={t.title} className="rounded-2xl border border-ink/[0.08] bg-navy-card p-7">
+                <Icon name={t.icon} className="h-6 w-6 text-purple-700" />
+                <h3 className="mt-5 font-heading text-lg font-bold text-ink">{t.title}</h3>
+                <p className="mt-2 text-[15px] leading-7 text-ink/70">{t.description}</p>
+                <ul className="mt-5 space-y-2 border-t border-ink/[0.06] pt-5">
                   {t.examples.map((e) => (
-                    <li key={e} className="flex items-center gap-2 text-sm text-white/75">
-                      <Icon name="check" className="h-4 w-4 text-electric" strokeWidth={2.5} />
+                    <li key={e} className="flex items-center gap-2 text-sm text-ink/75">
+                      <Icon name="check" className="h-4 w-4 text-electric-ink" strokeWidth={2.5} />
                       {e}
                     </li>
                   ))}
@@ -139,9 +139,9 @@ export default function DesenvolvimentoDeAppsPage() {
             />
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {stack.map((s) => (
-                <div key={s.name} className="rounded-xl border border-white/[0.08] bg-navy-card px-4 py-4">
-                  <p className="font-heading text-sm font-bold text-white">{s.name}</p>
-                  <p className="mt-1 text-xs text-white/60">{s.role}</p>
+                <div key={s.name} className="rounded-xl border border-ink/[0.08] bg-navy-card px-4 py-4">
+                  <p className="font-heading text-sm font-bold text-ink">{s.name}</p>
+                  <p className="mt-1 text-xs text-ink/60">{s.role}</p>
                 </div>
               ))}
             </div>
@@ -171,13 +171,13 @@ export default function DesenvolvimentoDeAppsPage() {
             title="Software para quem quer crescer mais rápido"
             intro="De um MVP de startup a uma ferramenta interna, adaptamos o processo à sua realidade."
           />
-          <ul className="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.08] bg-navy-card">
+          <ul className="divide-y divide-ink/[0.06] rounded-2xl border border-ink/[0.08] bg-navy-card">
             {audience.map((a) => (
               <li key={a.title} className="flex gap-5 p-6">
-                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
+                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric-ink" />
                 <div>
-                  <h3 className="font-heading text-base font-bold text-white">{a.title}</h3>
-                  <p className="mt-1 text-[15px] leading-7 text-white/70">{a.description}</p>
+                  <h3 className="font-heading text-base font-bold text-ink">{a.title}</h3>
+                  <p className="mt-1 text-[15px] leading-7 text-ink/70">{a.description}</p>
                 </div>
               </li>
             ))}

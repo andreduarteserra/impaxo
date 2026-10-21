@@ -27,7 +27,7 @@ export default function FAQTabs({ sections }: { sections: FAQSection[] }) {
             className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
               active === i
                 ? "bg-electric text-navy"
-                : "border border-white/15 text-white/55 hover:border-white/30 hover:text-white"
+                : "border border-ink/15 text-ink/55 hover:border-ink/30 hover:text-ink"
             }`}
           >
             {s.title}

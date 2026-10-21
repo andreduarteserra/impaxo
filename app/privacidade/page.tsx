@@ -111,11 +111,11 @@ export default function PrivacidadePage() {
     <section className="pt-32 pb-24 sm:pt-40">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <Kicker>Privacidade</Kicker>
-        <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">
           Política de Privacidade
         </h1>
-        <p className="mt-4 text-sm text-white/60">Última atualização: {UPDATED}</p>
-        <p className="mt-8 text-lg leading-8 text-white/70">
+        <p className="mt-4 text-sm text-ink/60">Última atualização: {UPDATED}</p>
+        <p className="mt-8 text-lg leading-8 text-ink/70">
           Esta política explica, em linguagem simples, que dados pessoais a Impaxo recebe pelo site, para
           que os usa e como você pode controlá-los, de acordo com a Lei Geral de Proteção de Dados (Lei nº
           13.709/2018).
@@ -123,15 +123,15 @@ export default function PrivacidadePage() {
         <div className="mt-12 space-y-10">
           {sections.map((s) => (
             <div key={s.title}>
-              <h2 className="font-heading text-xl font-bold text-white">{s.title}</h2>
-              <div className="mt-4 space-y-3 text-base leading-7 text-white/70 [&_a]:text-electric [&_a]:underline [&_a]:underline-offset-2 [&_li]:ml-5 [&_li]:list-disc [&_li]:pl-1 [&_strong]:text-white [&_ul]:space-y-2">
+              <h2 className="font-heading text-xl font-bold text-ink">{s.title}</h2>
+              <div className="mt-4 space-y-3 text-base leading-7 text-ink/70 [&_a]:text-electric-ink [&_a]:underline [&_a]:underline-offset-2 [&_li]:ml-5 [&_li]:list-disc [&_li]:pl-1 [&_strong]:text-ink [&_ul]:space-y-2">
                 {s.body}
               </div>
             </div>
           ))}
         </div>
-        <p className="mt-14 border-t border-white/[0.08] pt-8 text-sm text-white/60">
-          Dúvidas? <Link href="/contato" className="text-electric underline underline-offset-2">Fale com a gente</Link>.
+        <p className="mt-14 border-t border-ink/[0.08] pt-8 text-sm text-ink/60">
+          Dúvidas? <Link href="/contato" className="text-electric-ink underline underline-offset-2">Fale com a gente</Link>.
         </p>
       </div>
     </section>

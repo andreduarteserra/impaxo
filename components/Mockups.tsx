@@ -4,7 +4,7 @@ import Icon from "@/components/Icon";
 
 export function MensagramWordmark({ className = "text-2xl" }: { className?: string }) {
   return (
-    <span className={`font-heading font-semibold lowercase tracking-tight text-white ${className}`}>
+    <span className={`font-heading font-semibold lowercase tracking-tight text-ink ${className}`}>
       mensagram
       <span className="ml-[-0.04em] inline-block h-[0.22em] w-[0.22em] rounded-full bg-[#FF5E00] align-baseline" />
     </span>
@@ -55,7 +55,7 @@ export function HeroVisual() {
   return (
     <div aria-hidden className="relative h-[460px] w-full">
       {/* Janela de navegador */}
-      <div className="absolute left-0 top-6 w-[88%] overflow-hidden rounded-2xl border border-white/10 bg-navy-card shadow-2xl shadow-black/40">
+      <div className="absolute left-0 top-6 w-[88%] overflow-hidden rounded-2xl border border-white/10 bg-footer shadow-2xl shadow-black/40">
         <div className="flex items-center gap-1.5 border-b border-white/[0.06] px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -87,7 +87,7 @@ export function HeroVisual() {
       </div>
 
       {/* Cartão de métricas */}
-      <div className="absolute -left-4 bottom-4 w-56 rounded-2xl border border-white/10 bg-navy-deep/95 p-4 shadow-2xl shadow-black/50 backdrop-blur">
+      <div className="absolute -left-4 bottom-4 w-56 rounded-2xl border border-white/10 bg-[#101C33]/95 p-4 shadow-2xl shadow-black/50 backdrop-blur">
         <p className="text-[11px] font-semibold uppercase tracking-wider text-white/50">Leads do mês</p>
         <div className="mt-3 flex h-16 items-end gap-1.5">
           {[30, 45, 38, 60, 52, 75, 90].map((h, i) => (
@@ -98,7 +98,7 @@ export function HeroVisual() {
 
       {/* Telemóvel */}
       <div className="absolute bottom-0 right-0 w-44 rounded-[1.75rem] border border-white/10 bg-[#0A1530] p-2 shadow-2xl shadow-black/50">
-        <div className="rounded-[1.4rem] bg-navy-card p-3">
+        <div className="rounded-[1.4rem] bg-footer p-3">
           <div className="mx-auto h-1 w-10 rounded-full bg-white/15" />
           <div className="mt-4 h-20 rounded-xl bg-gradient-to-br from-brand-blue/60 to-electric/30" />
           <div className="mt-3 h-2.5 w-4/5 rounded bg-white/70" />

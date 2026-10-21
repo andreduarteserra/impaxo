@@ -12,7 +12,7 @@ export default function NewsletterForm() {
 
   if (subscribed) {
     return (
-      <p className="mt-8 text-sm font-medium text-electric">
+      <p className="mt-8 text-sm font-medium text-electric-ink">
         ✓ Subscrito com sucesso! Bem-vindo à comunidade Impaxo.
       </p>
     );
@@ -24,7 +24,7 @@ export default function NewsletterForm() {
         type="email"
         required
         placeholder="O seu melhor e-mail"
-        className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-electric/50 focus:ring-2 focus:ring-electric/20"
+        className="flex-1 rounded-full border border-ink/10 bg-ink/5 px-5 py-3 text-sm text-ink placeholder-ink/30 outline-none focus:border-electric/50 focus:ring-2 focus:ring-electric/20"
       />
       <button
         type="submit"

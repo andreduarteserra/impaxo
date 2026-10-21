@@ -60,23 +60,23 @@ export default function Navbar() {
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const linkClass = (active: boolean) =>
-    `text-sm font-medium transition ${active ? "text-electric" : "text-white/75 hover:text-white"}`;
+    `text-sm font-medium transition ${active ? "text-electric-ink" : "text-ink/75 hover:text-ink"}`;
   const mobileLinkClass = (active: boolean) =>
     `rounded-lg px-4 py-3 text-sm font-medium transition ${
-      active ? "bg-electric/10 text-electric" : "text-white/75 hover:bg-white/5 hover:text-white"
+      active ? "bg-electric/10 text-electric-ink" : "text-ink/75 hover:bg-ink/5 hover:text-ink"
     }`;
 
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled || menuOpen
-          ? "border-b border-white/[0.08] bg-navy-deep/90 backdrop-blur-md"
+          ? "border-b border-ink/[0.08] bg-white/90 shadow-sm backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav aria-label="Principal" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center" aria-label="Impaxo – página inicial">
-          <img src="/brand/impaxo-logo-dark-bg.svg" height={32} alt="Impaxo" className="h-7 w-auto sm:h-8" />
+          <img src="/brand/impaxo-logo-color.svg" height={32} alt="Impaxo" className="h-7 w-auto sm:h-8" />
         </Link>
 
         {/* Desktop */}
@@ -111,19 +111,19 @@ export default function Navbar() {
                 dropdownOpen ? "visible opacity-100" : "invisible opacity-0"
               }`}
             >
-              <div className="rounded-xl border border-white/[0.08] bg-navy-card p-2 shadow-xl shadow-black/30">
+              <div className="rounded-xl border border-ink/[0.08] bg-navy-card p-2 shadow-xl shadow-ink/10">
                 <Link
                   href="/servicos"
-                  className="block rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider text-electric hover:bg-white/5"
+                  className="block rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider text-electric-ink hover:bg-ink/5"
                 >
                   Todos os serviços
                 </Link>
-                <div className="my-1 border-t border-white/[0.06]" />
+                <div className="my-1 border-t border-ink/[0.06]" />
                 {services.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="block rounded-lg px-4 py-2.5 text-sm text-white/75 transition hover:bg-white/5 hover:text-white"
+                    className="block rounded-lg px-4 py-2.5 text-sm text-ink/75 transition hover:bg-ink/5 hover:text-ink"
                   >
                     {s.label}
                   </Link>
@@ -152,7 +152,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-white/75 transition hover:bg-white/10 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink/75 transition hover:bg-ink/10 lg:hidden"
           aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
@@ -171,7 +171,7 @@ export default function Navbar() {
       <div
         id="menu-mobile"
         className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-          menuOpen ? "max-h-[600px] border-t border-white/[0.06]" : "invisible max-h-0"
+          menuOpen ? "max-h-[600px] border-t border-ink/[0.06]" : "invisible max-h-0"
         }`}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-6 sm:px-6">
@@ -183,19 +183,19 @@ export default function Navbar() {
             type="button"
             onClick={() => setServicesOpen(!servicesOpen)}
             aria-expanded={servicesOpen}
-            className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-white/75 hover:bg-white/5 hover:text-white"
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-ink/75 hover:bg-ink/5 hover:text-ink"
           >
             Serviços
             <Icon name="chevronDown" className={`h-4 w-4 transition-transform ${servicesOpen ? "rotate-180" : ""}`} strokeWidth={2} />
           </button>
 
           {servicesOpen && (
-            <div className="ml-4 flex flex-col gap-1 border-l border-white/10 pl-4">
-              <Link href="/servicos" className="rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-electric hover:bg-white/5">
+            <div className="ml-4 flex flex-col gap-1 border-l border-ink/10 pl-4">
+              <Link href="/servicos" className="rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-electric-ink hover:bg-ink/5">
                 Todos os serviços
               </Link>
               {services.map((s) => (
-                <Link key={s.href} href={s.href} className="rounded-lg px-4 py-2.5 text-sm text-white/75 hover:bg-white/5 hover:text-white">
+                <Link key={s.href} href={s.href} className="rounded-lg px-4 py-2.5 text-sm text-ink/75 hover:bg-ink/5 hover:text-ink">
                   {s.label}
                 </Link>
               ))}
@@ -208,7 +208,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <div className="mt-4 border-t border-white/[0.08] pt-4">
+          <div className="mt-4 border-t border-ink/[0.08] pt-4">
             <Link
               href={CONTACT_HREF}
               className="block rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-blue-hover"

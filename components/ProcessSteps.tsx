@@ -18,12 +18,12 @@ export default function ProcessSteps({ details }: { details?: [string, string, s
       />
       {STEPS.map((step, i) => (
         <li key={step.title} className="relative flex gap-5 lg:flex-col lg:gap-0">
-          <span className="relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-electric/40 bg-navy font-heading text-sm font-bold text-electric shadow-[0_0_24px_-4px_rgba(0,212,255,0.45)]">
+          <span className="relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-electric/40 bg-navy font-heading text-sm font-bold text-electric-ink shadow-[0_0_24px_-4px_rgba(0,212,255,0.45)]">
             {String(i + 1).padStart(2, "0")}
           </span>
           <div className="lg:mt-6">
-            <h3 className="font-heading text-base font-bold text-white">{step.title}</h3>
-            <p className="mt-2 text-[15px] leading-7 text-white/70">{details?.[i] ?? step.description}</p>
+            <h3 className="font-heading text-base font-bold text-ink">{step.title}</h3>
+            <p className="mt-2 text-[15px] leading-7 text-ink/70">{details?.[i] ?? step.description}</p>
           </div>
         </li>
       ))}

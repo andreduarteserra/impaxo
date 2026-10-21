@@ -72,7 +72,7 @@ export default function MarketingDigitalPage() {
         kicker="Marketing Digital"
         title={
           <>
-            Mais visibilidade. <span className="text-electric">Mais vendas.</span>
+            Mais visibilidade. <span className="text-electric-ink">Mais vendas.</span>
           </>
         }
         intro="Estratégias integradas que levam a mensagem certa ao público certo, com cada real investido acompanhado em relatório."
@@ -96,9 +96,9 @@ export default function MarketingDigitalPage() {
             ))}
           </div>
           <div className="mt-12 flex flex-wrap items-center gap-3">
-            <span className="text-sm text-white/60">Plataformas com que trabalhamos:</span>
+            <span className="text-sm text-ink/60">Plataformas com que trabalhamos:</span>
             {platforms.map((p) => (
-              <span key={p} className="rounded-full border border-white/[0.1] px-4 py-1.5 text-sm text-white/75">
+              <span key={p} className="rounded-full border border-ink/[0.1] px-4 py-1.5 text-sm text-ink/75">
                 {p}
               </span>
             ))}
@@ -115,15 +115,15 @@ export default function MarketingDigitalPage() {
           />
           <div className="grid gap-4">
             {monthly.map((m) => (
-              <div key={m.title} className="flex gap-5 rounded-2xl border border-white/[0.08] bg-navy-card p-6">
-                <Icon name={m.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
+              <div key={m.title} className="flex gap-5 rounded-2xl border border-ink/[0.08] bg-navy-card p-6">
+                <Icon name={m.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric-ink" />
                 <div>
-                  <h3 className="font-heading text-base font-bold text-white">{m.title}</h3>
-                  <p className="mt-1 text-[15px] leading-7 text-white/70">{m.description}</p>
+                  <h3 className="font-heading text-base font-bold text-ink">{m.title}</h3>
+                  <p className="mt-1 text-[15px] leading-7 text-ink/70">{m.description}</p>
                 </div>
               </div>
             ))}
-            <p className="text-[15px] leading-7 text-white/70">
+            <p className="text-[15px] leading-7 text-ink/70">
               SEO costuma mostrar os primeiros resultados consistentes entre 3 e 6 meses. Anúncios trazem
               tráfego mais cedo, mas precisam de algumas semanas de dados para serem otimizados.
             </p>
@@ -153,13 +153,13 @@ export default function MarketingDigitalPage() {
             title="Estratégia sob medida para cada negócio"
             intro="Adaptamos o plano ao seu setor, orçamento e objetivos."
           />
-          <ul className="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.08] bg-navy-card">
+          <ul className="divide-y divide-ink/[0.06] rounded-2xl border border-ink/[0.08] bg-navy-card">
             {audience.map((a) => (
               <li key={a.title} className="flex gap-5 p-6">
-                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
+                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric-ink" />
                 <div>
-                  <h3 className="font-heading text-base font-bold text-white">{a.title}</h3>
-                  <p className="mt-1 text-[15px] leading-7 text-white/70">{a.description}</p>
+                  <h3 className="font-heading text-base font-bold text-ink">{a.title}</h3>
+                  <p className="mt-1 text-[15px] leading-7 text-ink/70">{a.description}</p>
                 </div>
               </li>
             ))}

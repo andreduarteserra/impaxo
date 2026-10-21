@@ -79,7 +79,7 @@ export default function ServicosPage() {
         kicker="Serviços"
         title={
           <>
-            Soluções digitais para o seu <span className="text-electric">crescimento</span>
+            Soluções digitais para o seu <span className="text-electric-ink">crescimento</span>
           </>
         }
         intro="Unimos tecnologia e estratégia de negócio em três frentes. Você pode contratar uma delas ou combinar as três com a mesma equipe."
@@ -92,18 +92,18 @@ export default function ServicosPage() {
           {services.map((svc) => (
             <div
               key={svc.href}
-              className="grid grid-cols-1 gap-10 rounded-3xl border border-white/[0.08] bg-navy-card p-8 sm:p-10 lg:grid-cols-2 lg:items-center lg:p-14"
+              className="grid grid-cols-1 gap-10 rounded-3xl border border-ink/[0.08] bg-navy-card p-8 sm:p-10 lg:grid-cols-2 lg:items-center lg:p-14"
             >
               <div>
                 <div className="flex items-center gap-4">
                   <IconBadge name={svc.icon} tone={svc.tone} />
-                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-white/60">{svc.tagline}</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-ink/60">{svc.tagline}</span>
                 </div>
-                <h2 className="mt-6 font-heading text-3xl font-bold text-white lg:text-4xl">{svc.title}</h2>
-                <p className="mt-5 text-base leading-8 text-white/65">{svc.description}</p>
+                <h2 className="mt-6 font-heading text-3xl font-bold text-ink lg:text-4xl">{svc.title}</h2>
+                <p className="mt-5 text-base leading-8 text-ink/65">{svc.description}</p>
                 <Link
                   href={svc.href}
-                  className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-electric transition hover:gap-3"
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-electric-ink transition hover:gap-3"
                 >
                   Ver detalhes do serviço
                   <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2} />
@@ -111,8 +111,8 @@ export default function ServicosPage() {
               </div>
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {svc.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white/75">
-                    <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                  <li key={f} className="flex items-center gap-3 rounded-xl border border-ink/[0.08] bg-ink/[0.03] px-4 py-3 text-sm text-ink/75">
+                    <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric-ink" strokeWidth={2.5} />
                     {f}
                   </li>
                 ))}

@@ -13,7 +13,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
           {i > 0 && (
             <svg
               aria-hidden
-              className="h-3 w-3 flex-shrink-0 text-white/20"
+              className="h-3 w-3 flex-shrink-0 text-ink/20"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -25,12 +25,12 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
           {item.href ? (
             <Link
               href={item.href}
-              className="text-white/40 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric rounded"
+              className="text-ink/40 transition hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric rounded"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-electric font-medium">{item.label}</span>
+            <span className="text-electric-ink font-medium">{item.label}</span>
           )}
         </span>
       ))}

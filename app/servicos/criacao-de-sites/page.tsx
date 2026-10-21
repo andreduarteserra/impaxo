@@ -85,7 +85,7 @@ export default function CriacaoDeSitesPage() {
         kicker="Criação de Sites"
         title={
           <>
-            Sites que trabalham <span className="text-electric">enquanto você dorme</span>
+            Sites que trabalham <span className="text-electric-ink">enquanto você dorme</span>
           </>
         }
         intro="Design exclusivo, carregamento rápido e SEO desde o início. Um site feito para trazer clientes, não só para existir."
@@ -120,17 +120,17 @@ export default function CriacaoDeSitesPage() {
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {types.map((t) => (
-              <div key={t.title} className="flex flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8">
-                <h3 className="font-heading text-xl font-bold text-white">{t.title}</h3>
-                <p className="mt-3 text-[15px] leading-7 text-white/70">{t.description}</p>
-                <p className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-electric">
+              <div key={t.title} className="flex flex-col rounded-2xl border border-ink/[0.08] bg-navy-card p-8">
+                <h3 className="font-heading text-xl font-bold text-ink">{t.title}</h3>
+                <p className="mt-3 text-[15px] leading-7 text-ink/70">{t.description}</p>
+                <p className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-electric-ink">
                   <Icon name="clock" className="h-4 w-4" />
                   {t.timeline}
                 </p>
-                <ul className="mt-6 flex-1 space-y-3 border-t border-white/[0.06] pt-6">
+                <ul className="mt-6 flex-1 space-y-3 border-t border-ink/[0.06] pt-6">
                   {t.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-white/75">
-                      <Icon name="check" className="mt-0.5 h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-ink/75">
+                      <Icon name="check" className="mt-0.5 h-4 w-4 flex-shrink-0 text-electric-ink" strokeWidth={2.5} />
                       {f}
                     </li>
                   ))}
@@ -166,13 +166,13 @@ export default function CriacaoDeSitesPage() {
             title="Para negócios de todos os tamanhos"
             intro="Adaptamos a solução à realidade e ao orçamento de cada cliente."
           />
-          <ul className="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.08] bg-navy-card">
+          <ul className="divide-y divide-ink/[0.06] rounded-2xl border border-ink/[0.08] bg-navy-card">
             {audience.map((a) => (
               <li key={a.title} className="flex gap-5 p-6">
-                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric" />
+                <Icon name={a.icon} className="mt-0.5 h-6 w-6 flex-shrink-0 text-electric-ink" />
                 <div>
-                  <h3 className="font-heading text-base font-bold text-white">{a.title}</h3>
-                  <p className="mt-1 text-[15px] leading-7 text-white/70">{a.description}</p>
+                  <h3 className="font-heading text-base font-bold text-ink">{a.title}</h3>
+                  <p className="mt-1 text-[15px] leading-7 text-ink/70">{a.description}</p>
                 </div>
               </li>
             ))}

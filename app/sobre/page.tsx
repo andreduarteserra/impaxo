@@ -44,7 +44,7 @@ export default function SobrePage() {
         kicker="Sobre a Impaxo"
         title={
           <>
-            Uma agência de tecnologia <span className="text-electric">com alma de produto</span>
+            Uma agência de tecnologia <span className="text-electric-ink">com alma de produto</span>
           </>
         }
         intro="Somos uma agência com sede em Joinville, Santa Catarina, e profissionais espalhados remotamente pelo Brasil. Criamos sites, aplicativos e campanhas para empresas do Brasil e dos demais países de língua portuguesa. E, ao contrário da maioria das agências, também construímos e mantemos os nossos próprios produtos."
@@ -52,7 +52,7 @@ export default function SobrePage() {
 
       <section className="pb-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-2 lg:px-8">
-          <div className="space-y-5 text-base leading-8 text-white/70">
+          <div className="space-y-5 text-base leading-8 text-ink/70">
             <p>
               A Impaxo nasceu de uma convicção simples: a tecnologia de uma pequena ou média empresa merece o
               mesmo cuidado que a de um produto digital usado por milhares de pessoas.
@@ -63,7 +63,7 @@ export default function SobrePage() {
               medimos o resultado e continuamos a melhorar.
             </p>
             <p>
-              O <strong className="text-white">Impaxo Lab</strong> é onde isso fica à prova. Lá desenvolvemos
+              O <strong className="text-ink">Impaxo Lab</strong> é onde isso fica à prova. Lá desenvolvemos
               produtos próprios, como o Mensagram, um mensageiro com criptografia de ponta a ponta. O que
               aprendemos ali, de segurança a infraestrutura, vai direto para os projetos dos nossos clientes.
             </p>
@@ -73,8 +73,8 @@ export default function SobrePage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="rounded-3xl border border-white/[0.08] bg-navy-card p-8 sm:p-10">
-            <h2 className="font-heading text-lg font-bold text-white">O que fazemos</h2>
+          <div className="rounded-3xl border border-ink/[0.08] bg-navy-card p-8 sm:p-10">
+            <h2 className="font-heading text-lg font-bold text-ink">O que fazemos</h2>
             <ul className="mt-6 space-y-4">
               {[
                 ["desktop", "Sites, landing pages e lojas virtuais"],
@@ -82,17 +82,17 @@ export default function SobrePage() {
                 ["mobile", "Aplicativos, plataformas web e sistemas internos"],
                 ["cube", "Produtos próprios no Impaxo Lab"],
               ].map(([icon, label]) => (
-                <li key={label} className="flex items-center gap-4 text-sm text-white/75">
-                  <Icon name={icon as IconName} className="h-5 w-5 flex-shrink-0 text-electric" />
+                <li key={label} className="flex items-center gap-4 text-sm text-ink/75">
+                  <Icon name={icon as IconName} className="h-5 w-5 flex-shrink-0 text-electric-ink" />
                   {label}
                 </li>
               ))}
             </ul>
-            <h2 className="mt-10 font-heading text-lg font-bold text-white">O que não fazemos</h2>
+            <h2 className="mt-10 font-heading text-lg font-bold text-ink">O que não fazemos</h2>
             <ul className="mt-6 space-y-3">
               {notForUs.map((item) => (
-                <li key={item} className="flex items-center gap-4 text-sm text-white/65">
-                  <span className="h-px w-4 flex-shrink-0 bg-white/30" />
+                <li key={item} className="flex items-center gap-4 text-sm text-ink/65">
+                  <span className="h-px w-4 flex-shrink-0 bg-ink/30" />
                   {item}
                 </li>
               ))}

@@ -157,11 +157,11 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-[1.1fr_1fr] lg:px-8">
           <div>
             <Kicker>Agência de tecnologia · Joinville, SC</Kicker>
-            <h1 className="mt-7 font-heading text-[2.6rem] font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="mt-7 font-heading text-[2.6rem] font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4.25rem]">
               Sites, apps e marketing com{" "}
               <span className="bg-gradient-to-r from-electric to-brand-blue bg-clip-text text-transparent">padrão de produto</span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-white/70">
+            <p className="mt-7 max-w-xl text-lg leading-8 text-ink/70">
               A Impaxo também desenvolve os próprios produtos, como o Mensagram, um mensageiro com
               criptografia de ponta a ponta. Levamos esse mesmo rigor para o site, o app ou a campanha da
               sua empresa.
@@ -183,14 +183,14 @@ export default function HomePage() {
       </section>
 
       {/* ── Compromissos ── */}
-      <section className="border-y border-white/[0.06] bg-navy-deep">
+      <section className="border-y border-ink/[0.06] bg-navy-deep">
         <div className="mx-auto grid max-w-7xl grid-cols-1 px-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
           {commitments.map((c) => (
             <div key={c.title} className="flex gap-4 py-7 sm:px-4 lg:px-6">
-              <Icon name={c.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric" />
+              <Icon name={c.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric-ink" />
               <div>
-                <p className="font-heading text-sm font-bold text-white">{c.title}</p>
-                <p className="mt-1 text-[15px] leading-7 text-white/70">{c.text}</p>
+                <p className="font-heading text-sm font-bold text-ink">{c.title}</p>
+                <p className="mt-1 text-[15px] leading-7 text-ink/70">{c.text}</p>
               </div>
             </div>
           ))}
@@ -213,14 +213,14 @@ export default function HomePage() {
               <FadeIn key={s.problem} delay={(i % 3) * 100} className="w-[82%] flex-shrink-0 snap-start sm:w-auto">
                 <Link
                   href={s.href}
-                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-electric/30"
+                  className="group flex h-full flex-col rounded-2xl border border-ink/[0.08] bg-navy-card p-7 transition duration-300 hover:-translate-y-0.5 hover:border-electric/30"
                 >
                   <div className="flex items-start gap-4">
-                    <Icon name={s.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-white/40 transition group-hover:text-electric" />
-                    <p className="font-heading text-base font-bold leading-snug text-white">“{s.problem}”</p>
+                    <Icon name={s.icon} className="mt-0.5 h-5 w-5 flex-shrink-0 text-ink/40 transition group-hover:text-electric-ink" />
+                    <p className="font-heading text-base font-bold leading-snug text-ink">“{s.problem}”</p>
                   </div>
-                  <p className="mt-4 flex-1 border-t border-white/[0.06] pt-4 text-[15px] leading-7 text-white/70">{s.answer}</p>
-                  <span className="mt-5 flex items-center gap-1.5 text-sm font-medium text-white/60 transition group-hover:text-electric">
+                  <p className="mt-4 flex-1 border-t border-ink/[0.06] pt-4 text-[15px] leading-7 text-ink/70">{s.answer}</p>
+                  <span className="mt-5 flex items-center gap-1.5 text-sm font-medium text-ink/60 transition group-hover:text-electric-ink">
                     Como resolvemos
                     <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
                   </span>
@@ -228,7 +228,7 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
-          <p className="mt-4 flex items-center gap-2 text-sm text-white/50 sm:hidden">
+          <p className="mt-4 flex items-center gap-2 text-sm text-ink/50 sm:hidden">
             Deslize para ver mais
             <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2} />
           </p>
@@ -250,28 +250,28 @@ export default function HomePage() {
               <FadeIn key={svc.href} delay={i * 120}>
                 <Link
                   href={svc.href}
-                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-navy-card p-8 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-[#223658]"
+                  className="group flex h-full flex-col rounded-2xl border border-ink/[0.08] bg-navy-card p-8 transition duration-300 hover:-translate-y-1 hover:border-ink/20 hover:bg-[#F7F9FC]"
                 >
                   <IconBadge name={svc.icon} tone={svc.tone} />
-                  <h3 className="mt-6 font-heading text-xl font-bold text-white">{svc.title}</h3>
-                  <p className="mt-3 text-[15px] leading-7 text-white/70">{svc.description}</p>
-                  <ul className="mt-6 space-y-2.5 border-t border-white/[0.06] pt-6">
+                  <h3 className="mt-6 font-heading text-xl font-bold text-ink">{svc.title}</h3>
+                  <p className="mt-3 text-[15px] leading-7 text-ink/70">{svc.description}</p>
+                  <ul className="mt-6 space-y-2.5 border-t border-ink/[0.06] pt-6">
                     {svc.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-sm text-white/80">
-                        <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                      <li key={item} className="flex items-center gap-2.5 text-sm text-ink/80">
+                        <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric-ink" strokeWidth={2.5} />
                         {item}
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 flex-1 text-[15px] leading-7 text-white/65">
-                    <span className="font-semibold text-white/75">Ideal para:</span> {svc.idealFor}
+                  <p className="mt-6 flex-1 text-[15px] leading-7 text-ink/65">
+                    <span className="font-semibold text-ink/75">Ideal para:</span> {svc.idealFor}
                   </p>
                   <div className="mt-7 flex items-center justify-between gap-4">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 px-3 py-1 text-xs text-ink/60">
                       <Icon name="clock" className="h-3.5 w-3.5" />
                       {svc.note}
                     </span>
-                    <span className="flex items-center gap-1.5 text-sm font-medium text-white/70 transition group-hover:text-electric">
+                    <span className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition group-hover:text-electric-ink">
                       Saiba mais
                       <Icon name="chevronRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
                     </span>
@@ -289,10 +289,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <div>
               <Kicker>Caso Impaxo Lab</Kicker>
-              <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                 Construímos um mensageiro criptografado do zero
               </h2>
-              <p className="mt-5 text-base leading-7 text-white/70">
+              <p className="mt-5 text-base leading-7 text-ink/70">
                 O Mensagram é o nosso próprio produto. Implementamos o Protocolo Signal, grupos e
                 chamadas criptografadas, cópia de segurança e a infraestrutura que mantém tudo no ar.
               </p>
@@ -304,8 +304,8 @@ export default function HomePage() {
                   "Auditorias de segurança internas antes de abrir o beta",
                 ]}
               />
-              <p className="mt-8 rounded-2xl border border-white/[0.08] bg-navy-card p-5 text-[15px] leading-7 text-white/70">
-                <strong className="text-white">Por que isso importa para você:</strong> é a mesma equipe, com
+              <p className="mt-8 rounded-2xl border border-ink/[0.08] bg-navy-card p-5 text-[15px] leading-7 text-ink/70">
+                <strong className="text-ink">Por que isso importa para você:</strong> é a mesma equipe, com
                 o mesmo cuidado, que vai construir o seu site ou o seu app.
               </p>
               <div className="mt-8">
@@ -323,7 +323,7 @@ export default function HomePage() {
               <div className="relative flex flex-col items-center gap-6">
                 <div className="flex items-center gap-3">
                   <MensagramWordmark />
-                  <span className="rounded-full border border-[#FF5E00]/30 bg-[#FF5E00]/10 px-3 py-1 text-xs font-semibold text-[#FF8A40]">
+                  <span className="rounded-full border border-[#FF5E00]/30 bg-[#FF5E00]/10 px-3 py-1 text-xs font-semibold text-[#C2410C]">
                     {MENSAGRAM_STATUS}
                   </span>
                 </div>
@@ -341,7 +341,7 @@ export default function HomePage() {
             kicker="Por que a Impaxo"
             title={
               <>
-                Mais do que uma agência: <span className="text-electric">um time de produto</span>
+                Mais do que uma agência: <span className="text-electric-ink">um time de produto</span>
               </>
             }
             intro="Uma comparação honesta entre os caminhos mais comuns para colocar a sua empresa na internet."
@@ -349,53 +349,53 @@ export default function HomePage() {
           {/* Celular: um cartão por critério, com a Impaxo em destaque */}
           <ul className="space-y-3 md:hidden">
             {comparison.map((c) => (
-              <li key={c.row} className="rounded-2xl border border-white/[0.08] bg-navy-card p-5">
-                <p className="font-heading text-sm font-bold text-white">{c.row}</p>
-                <p className="mt-3 flex items-center gap-2 rounded-xl bg-brand-blue/10 px-3 py-2 text-[15px] font-semibold text-white">
-                  <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
-                  <span className="text-electric">Impaxo:</span> {c.values[3]}
+              <li key={c.row} className="rounded-2xl border border-ink/[0.08] bg-navy-card p-5">
+                <p className="font-heading text-sm font-bold text-ink">{c.row}</p>
+                <p className="mt-3 flex items-center gap-2 rounded-xl bg-brand-blue/10 px-3 py-2 text-[15px] font-semibold text-ink">
+                  <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric-ink" strokeWidth={2.5} />
+                  <span className="text-electric-ink">Impaxo:</span> {c.values[3]}
                 </p>
                 <dl className="mt-3 grid grid-cols-1 gap-1.5 text-sm">
                   {comparisonColumns.slice(0, 3).map((col, i) => (
                     <div key={col} className="flex justify-between gap-4">
-                      <dt className="text-white/50">{col}</dt>
-                      <dd className="text-right text-white/70">{c.values[i]}</dd>
+                      <dt className="text-ink/50">{col}</dt>
+                      <dd className="text-right text-ink/70">{c.values[i]}</dd>
                     </div>
                   ))}
                 </dl>
               </li>
             ))}
           </ul>
-          <div className="hidden overflow-x-auto rounded-2xl border border-white/[0.08] bg-navy-card md:block">
+          <div className="hidden overflow-x-auto rounded-2xl border border-ink/[0.08] bg-navy-card md:block">
             <table className="w-full min-w-[720px] text-left text-sm">
               <caption className="sr-only">Comparação entre fazer sozinho, freelancer, agência tradicional e Impaxo</caption>
               <thead>
-                <tr className="border-b border-white/[0.08]">
-                  <th scope="col" className="p-5 font-medium text-white/50">
+                <tr className="border-b border-ink/[0.08]">
+                  <th scope="col" className="p-5 font-medium text-ink/50">
                     <span className="sr-only">Critério</span>
                   </th>
                   {comparisonColumns.map((col, i) => (
                     <th
                       key={col}
                       scope="col"
-                      className={`p-5 font-heading text-sm font-bold ${i === 3 ? "bg-brand-blue/10 text-electric" : "text-white/80"}`}
+                      className={`p-5 font-heading text-sm font-bold ${i === 3 ? "bg-brand-blue/10 text-electric-ink" : "text-ink/80"}`}
                     >
                       {col}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.06]">
+              <tbody className="divide-y divide-ink/[0.06]">
                 {comparison.map((c) => (
                   <tr key={c.row}>
-                    <th scope="row" className="p-5 font-medium text-white/80">
+                    <th scope="row" className="p-5 font-medium text-ink/80">
                       {c.row}
                     </th>
                     {c.values.map((v, i) => (
-                      <td key={i} className={`p-5 ${i === 3 ? "bg-brand-blue/10 font-semibold text-white" : "text-white/55"}`}>
+                      <td key={i} className={`p-5 ${i === 3 ? "bg-brand-blue/10 font-semibold text-ink" : "text-ink/55"}`}>
                         {i === 3 ? (
                           <span className="flex items-center gap-2">
-                            <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric" strokeWidth={2.5} />
+                            <Icon name="check" className="h-4 w-4 flex-shrink-0 text-electric-ink" strokeWidth={2.5} />
                             {v}
                           </span>
                         ) : (
@@ -408,7 +408,7 @@ export default function HomePage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-5 text-[15px] leading-7 text-white/60">
+          <p className="mt-5 text-[15px] leading-7 text-ink/60">
             Comparação geral: há ótimos freelancers e ótimas agências. O importante é saber o que perguntar antes
             de contratar, seja a quem for.
           </p>
@@ -438,22 +438,22 @@ export default function HomePage() {
             />
             <ol className="space-y-4">
               {nextSteps.map((s, i) => (
-                <li key={s.title} className="flex gap-5 rounded-2xl border border-white/[0.08] bg-navy-card p-6">
-                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-blue/15 font-heading text-sm font-bold text-[#7f9bff]">
+                <li key={s.title} className="flex gap-5 rounded-2xl border border-ink/[0.08] bg-navy-card p-6">
+                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-blue/15 font-heading text-sm font-bold text-brand-blue">
                     {i + 1}
                   </span>
                   <div>
-                    <h3 className="font-heading text-base font-bold text-white">{s.title}</h3>
-                    <p className="mt-1 text-[15px] leading-7 text-white/70">{s.text}</p>
+                    <h3 className="font-heading text-base font-bold text-ink">{s.title}</h3>
+                    <p className="mt-1 text-[15px] leading-7 text-ink/70">{s.text}</p>
                   </div>
                 </li>
               ))}
             </ol>
           </div>
           <aside className="self-end rounded-3xl border border-electric/20 bg-gradient-to-b from-electric/[0.07] to-transparent p-8 sm:p-10">
-            <Icon name="document" className="h-7 w-7 text-electric" />
-            <h3 className="mt-5 font-heading text-xl font-bold text-white">Para a conversa render mais</h3>
-            <p className="mt-2 text-[15px] leading-7 text-white/70">
+            <Icon name="document" className="h-7 w-7 text-electric-ink" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-ink">Para a conversa render mais</h3>
+            <p className="mt-2 text-[15px] leading-7 text-ink/70">
               Nada disto é obrigatório, mas ajuda a chegar a uma proposta realista logo de primeira.
             </p>
             <CheckList items={prepare} className="mt-6" />

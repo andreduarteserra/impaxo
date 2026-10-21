@@ -66,7 +66,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${syne.variable} ${dmSans.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-navy text-white antialiased">
+      <body className="min-h-screen flex flex-col bg-navy text-ink antialiased">
         <JsonLd data={organizationJsonLd} />
         <Navbar />
         <main className="flex-1">{children}</main>
